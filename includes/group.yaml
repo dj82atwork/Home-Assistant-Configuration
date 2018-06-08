@@ -93,6 +93,7 @@ lights:
     - light.trent_bedside
     - light.rachel_bedside
     - light.study_desk_lamp
+    - light.yeelink_light_strip
 switches:
   name: Switches
   entities:

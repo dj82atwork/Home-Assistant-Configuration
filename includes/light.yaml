@@ -12,6 +12,8 @@
     !secret study_desk_lamp_light_ip:
       name: Study Desk Lamp
       transition: 1000
+    !secret yeelink_light_strip:
+      name: Yeelink Light Strip
     !secret trent_bedside_light_ip:
       name: Trent Bedside
     !secret rachel_bedside_light_ip:

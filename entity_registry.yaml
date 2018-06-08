@@ -270,3 +270,7 @@ media_player.chrome_3:
   name:
   platform: plex
   unique_id: 5v1p725w8lcwhrl2eggwwas7
+media_player.xboxone_5:
+  name:
+  platform: plex
+  unique_id: cka5i91544lmyawpokjmvkdh
