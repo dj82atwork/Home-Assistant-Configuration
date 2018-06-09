@@ -20,7 +20,6 @@ default_view:
     - group.harmonytv
     - group.radio
     - group.family
-    - group.scripts
 home_view:
   view: yes
   icon: mdi:security-home
@@ -60,6 +59,7 @@ info_view:
     - group.trash_schedule
     - group.recycle_schedule
     - group.projector_room_remote
+    - group.scripts
     - group.speech_functions
 # Groups
 family:

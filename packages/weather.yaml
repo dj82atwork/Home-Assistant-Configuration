@@ -10,13 +10,13 @@ group:
     name: Weather
     control: hidden
     entities:
-      - sun.sun
-      - sensor.weather_summary
-      - sensor.weather_temperature
-      - sensor.weather_daily_low_temperature
-      - sensor.weather_daily_high_temperature
-      - sensor.weather_precip_intensity
-      - sensor.weather_humidity
+#      - sun.sun
+#      - sensor.weather_summary
+#      - sensor.weather_temperature
+#      - sensor.weather_daily_low_temperature
+#      - sensor.weather_daily_high_temperature
+#      - sensor.weather_precip_intensity
+#      - sensor.weather_humidity
       - weather.melbourne_forecast
 
 sensor:
