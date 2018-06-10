@@ -68,10 +68,11 @@
 
 # Screenshots
 #### Day Theme
-![Home](https://raw.githubusercontent.com/stanvx/Home-Assistant-Configuration/master/screenshots/HA1.PNG)
-![Outside](https://raw.githubusercontent.com/stanvx/Home-Assistant-Configuration/master/screenshots/HA2.PNG)
-![Lights](https://raw.githubusercontent.com/stanvx/Home-Assistant-Configuration/master/screenshots/HA3.PNG)
-![Other](https://raw.githubusercontent.com/stanvx/Home-Assistant-Configuration/master/screenshots/HA4.PNG)
+![Default](https://raw.githubusercontent.com/stanvx/Home-Assistant-Configuration/master/screenshots/HA1.PNG)
+![Home](https://raw.githubusercontent.com/stanvx/Home-Assistant-Configuration/master/screenshots/HA2.PNG)
+![Security](https://raw.githubusercontent.com/stanvx/Home-Assistant-Configuration/master/screenshots/HA3.PNG)
+![Lights](https://raw.githubusercontent.com/stanvx/Home-Assistant-Configuration/master/screenshots/HA4.PNG)
+![Other](https://raw.githubusercontent.com/stanvx/Home-Assistant-Configuration/master/screenshots/HA5.PNG)
 #### Night Theme
 ![Night](https://raw.githubusercontent.com/stanvx/Home-Assistant-Configuration/master/screenshots/HANIGHT.PNG)
 #### HA Floorplan
