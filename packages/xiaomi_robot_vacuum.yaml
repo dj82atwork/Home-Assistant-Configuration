@@ -67,6 +67,7 @@ input_select:
       - Mopping Surfaces
       - Projector Room
       - Study
+    initial: Select Input
 
 script:
   vacuum_all_except_bedroom_and_ensuite:

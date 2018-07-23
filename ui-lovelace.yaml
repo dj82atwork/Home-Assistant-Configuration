@@ -5,20 +5,66 @@ views:
     cards:
       - type: weather-forecast
         entity: weather.melbourne_forecast
-      - type: media-control
-        entity: media_player.living_room_home
-      - type: media-control
-        entity: media_player.tv_ua55ju6400
-      - type: media-control
-        entity: media_player.living_room
-      - type: media-control
-        entity: media_player.bed_room
-      - type: media-control
-        entity: media_player.bedroom_speaker
-      - type: media-control
-        entity: media_player.outside
-      - type: media-control
-        entity: media_player.spotify
+      - type: entity-filter
+        entities:
+          - media_player.living_room_home
+        state_filter:
+          - 'playing'
+          - 'paused'
+        show_empty: false
+        card:
+          type: media-control
+          entity: media_player.living_room_home
+      - type: entity-filter
+        entities:
+          - media_player.tv_ua55ju6400
+        state_filter:
+          - 'playing'
+          - 'paused'
+        show_empty: false
+        card:
+          type: media-control
+          entity: media_player.tv_ua55ju6400
+      - type: entity-filter
+        entities:
+          - media_player.living_room
+        state_filter:
+          - 'playing'
+          - 'paused'
+        show_empty: false
+        card:
+          type: media-control
+          entity: media_player.living_room
+      - type: entity-filter
+        entities:
+          - media_player.bed_room
+        state_filter:
+          - 'playing'
+          - 'paused'
+        show_empty: false
+        card:
+          type: media-control
+          entity: media_player.bed_room
+      - type: entity-filter
+        entities:
+          - media_player.bedroom_speaker
+        state_filter:
+          - 'playing'
+          - 'paused'
+        show_empty: false
+        card:
+          type: media-control
+          entity: media_player.bedroom_speaker
+      - type: entity-filter
+        entities:
+          - media_player.outside
+        state_filter:
+          - 'playing'
+          - 'paused'
+        show_empty: false
+        card:
+          type: media-control
+          entity: media_player.outside
       - type: entities
         title: Harmony Remote
         entities:

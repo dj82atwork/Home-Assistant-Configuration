@@ -16,7 +16,6 @@ default_view:
     - group.media_bed_room
     - group.media_bedroom_speaker
     - group.media_outside
-    - group.media_spotify
     - group.harmonytv
     - group.radio
     - group.family

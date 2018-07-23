@@ -4,6 +4,7 @@
 #   @package        :   Display Media Players
 #   @description    :   Display / Hide Media Players from the Home Assistant Default View when not being used.
 #   @url            :   
+#   NOT NEEDED ONCE MIGRATED TO LOVELACE
 ###############################################################################
 homeassistant:
   customize:
@@ -43,10 +44,6 @@ group:
     name: Media Outside
     entities:
       - media_player.outside
-  media_spotify:
-    name: Media Spotify
-    entities:
-      - media_player.spotify
 
 ###############################################################################
 #                               Automations
@@ -266,39 +263,3 @@ automation:
       entity_id: group.media_outside
       data:
         visible: True
-
-## Media Player Spotify
-# Hide Media Player
-
-  - alias: 'Hide media_player.spotify while not playing'
-    hide_entity: true
-    trigger:
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: media_player.spotify
-      to: 'idle'
-    - platform: state
-      entity_id: media_player.spotify
-      to: 'off'
-    action:
-    - service: group.set_visibility
-      entity_id: group.media_spotify
-      data:
-        visible: False
-# Show Media Player
-
-  - alias: 'Show media_player.spotify while playing'
-    hide_entity: true
-    trigger:
-    - platform: state
-      entity_id: media_player.spotify
-      to: 'playing'
-    - platform: state
-      entity_id: media_player.spotify
-      to: 'paused'
-    action:
-    - service: group.set_visibility
-      entity_id: group.media_spotify
-      data:
-        visible: True  

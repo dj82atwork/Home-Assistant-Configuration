@@ -25,6 +25,7 @@ input_select:
       - Play Retropie
       - Play Wii U
       - Power Off
+    initial: Select Input
     icon: mdi:remote
 
 sensor:

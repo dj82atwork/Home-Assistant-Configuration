@@ -78,6 +78,7 @@ input_select:
     options:
      - TOP
      - SWING
+    initial: TOP
     icon: mdi:arrow-expand
 
 sensor:
