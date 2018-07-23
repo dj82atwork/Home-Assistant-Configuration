@@ -23,7 +23,7 @@ weather_frame:
     refresh: 300
     frame_style: ""
     img_list: 
-      - https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?station=002&brand=wui&num=1&delay=15&type=A0Q&frame=0&scale=0.25&noclutter=0&showstorms=0&mapx=400&mapy=240&centerx=400&centery=240&transx=0&transy=0&showlabels=1&severe=0&rainsnow=0&lightning=0&smooth=0&rand=25304231&lat=0&lon=0&label=you
+      - http://www.bom.gov.au/radar/IDR024.gif?{{%20now().strftime(%22%Y%m%d%H%M%22)%20}}00
 
 weather_hourly_summary:
     entity: sensor.weather_hourly_summary

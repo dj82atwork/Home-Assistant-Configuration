@@ -150,9 +150,9 @@ projector_room_remote:
   entities:
     - switch.projector_power
     - switch.reciever_power
-    - switch.reciever_volume__2
-    - switch.reciever_volume_
-    - switch.reciever_hdmi_1
-    - switch.reciever_hdmi_2
-    - switch.reciever_hdmi_3
-    - switch.reciever_hdmi_4
+    - switch.reciever_volume_up
+    - switch.reciever_volume_down
+    - switch.reciever_hdmi1
+    - switch.reciever_hdmi2
+    - switch.reciever_hdmi3
+    - switch.reciever_hdmi4

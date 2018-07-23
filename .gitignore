@@ -37,5 +37,8 @@ phue.conf
 harmony_media_room.conf
 pyozw.sqlite
 !/.gitignore
+.storage
+*.config_entries
 hadaemon
 __pycache__/
+entity_registry.yaml

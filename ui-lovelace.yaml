@@ -1,0 +1,273 @@
+name: Home
+views:
+  - name: Home
+    icon: mdi:home
+    cards:
+      - type: weather-forecast
+        entity: weather.melbourne_forecast
+      - type: media-control
+        entity: media_player.living_room_home
+      - type: media-control
+        entity: media_player.tv_ua55ju6400
+      - type: media-control
+        entity: media_player.living_room
+      - type: media-control
+        entity: media_player.bed_room
+      - type: media-control
+        entity: media_player.bedroom_speaker
+      - type: media-control
+        entity: media_player.outside
+      - type: media-control
+        entity: media_player.spotify
+      - type: entities
+        title: Harmony Remote
+        entities:
+          - sensor.harmony_activity
+          - input_select.harmony
+      - type: entities
+        title: Radio
+        entities:
+          - input_select.radio_player
+          - input_select.radio_station
+          - input_number.google_volume
+      - type: entities
+        title: Family
+        entities:
+          - device_tracker.google_maps_109209758211303121867
+          - device_tracker.rachels_iphone
+  - name: House
+    icon: mdi:security-home
+    cards:
+      - type: entities
+        title: AC Split System
+        entities:
+          - input_select.ac_operation_mode
+          - input_select.ac_fan_mode
+          - input_select.ac_swing_mode
+          - input_number.ac_target_temp
+          - sensor.ac_target
+          - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
+      - type: entities
+        title: AC Scheduler
+        entities:
+          - input_boolean.ac_on_schedule_active
+          - input_text.ac_on_schedule
+          - input_boolean.ac_off_schedule_active
+          - input_text.ac_off_schedule
+      - type: entities
+        title: Bedroom Fan
+        entities:
+          - input_select.fan_operation_mode
+          - input_number.fan_speed
+      - type: entities
+        title: Robot Vacuum
+        entities:
+          - vacuum.xiaomi_vacuum_cleaner
+          - input_boolean.disable_daily_vacuum
+      - type: entities
+        title: Vacuum a Room
+        entities:
+          - input_select.vacuum_room
+          - binary_sensor.vacuum_room
+  - name: Security
+    icon: mdi:cctv
+    cards:
+      - type: picture-glance
+        title: Front Door
+        entities:
+          - lock.front_door
+          - binary_sensor.door_window_sensor_158d00019f3211
+          - light.entry
+        camera_image: camera.front_door
+      - type: picture-glance
+        title: Back Door
+        entities:
+          - light.entry
+          - binary_sensor.door_window_sensor_158d000186f0ec
+          - switch.outside_heater
+        camera_image: camera.back_door
+      - type: entities
+        title: Security
+        entities:
+          - lock.front_door
+          - alarm_control_panel.ha_alarm
+          - binary_sensor.motion
+          - binary_sensor.motion_sensor_158d000165627b
+      - type: entities
+        title: Door and Window Sensors
+        entities:
+          - sensor.door_count
+          - sensor.window_count
+          - binary_sensor.door_window_sensor_158d00019f3211
+          - binary_sensor.door_window_sensor_158d000186f0ec
+          - binary_sensor.door_window_sensor_158d0001d7acfc
+          - binary_sensor.door_window_sensor_158d0001e037dc
+          - binary_sensor.door_window_sensor_158d00019fbe38
+          - binary_sensor.door_window_sensor_158d0001a4a872
+  - name: Lights
+    icon: mdi:lightbulb
+    cards:
+      - type: entities
+        title: Lights
+        entities:
+          - light.entry
+          - light.entryway
+          - switch.livingroom_light
+          - switch.kitchen_light
+          - light.trent_bedside
+          - light.rachel_bedside
+          - light.study_desk_lamp
+          - light.yeelink_light_strip
+      - type: entities
+        title: Switches
+        entities:
+          - switch.living_room_lamp
+          - switch.outside_heater
+  - name: Info
+    icon: mdi:settings
+    cards:
+      - type: entities
+        title: Links
+        entities:
+          - weblink.router
+          - weblink.synology
+          - weblink.hadashboard
+          - weblink.surveillance_station
+          - weblink.nzb_get
+          - weblink.sonarr
+          - weblink.radarr
+      - type: entities
+        title: Network
+        entities:
+          - sensor.speedtest_ping
+          - sensor.speedtest_download
+          - sensor.speedtest_upload
+          - sensor.nzbget_speed
+          - switch.nzbget_switch
+          - sensor.uptime
+          - sensor.xiaomigateway
+          - sensor.livingroomgooglehome
+          - sensor.bedroomgooglehomemini
+          - sensor.livingroomtv
+          - sensor.livingroomchromecast
+          - sensor.bedroomchromecast
+          - sensor.outsidechromecast
+          - sensor.xboxonex
+          - sensor.xboxones
+          - sensor.ps4
+      - type: entities
+        title: Synology
+        entities:
+          - sensor.cpu_load_total
+          - sensor.memory_usage_real
+          - sensor.status_volume_1
+          - sensor.volume_used_volume_1
+          - sensor.status_volume_2
+          - sensor.volume_used_volume_2
+          - sensor.maximum_disk_temp_volume_2
+          - sensor.status_volume_3
+      - type: entities
+        title: Washing Machine
+        entities:
+          - sensor.washing_machine_status
+          - switch.plug_158d0001debe7a
+      - type: entities
+        title: UPS
+        entities:
+          - sensor.ups_status
+          - sensor.ups_load
+          - sensor.ups_battery_runtime_mins
+          - sensor.ups_battery_charge
+      - type: entities
+        title: Automation Override
+        entities:
+          - input_boolean.guest_mode
+          - input_boolean.alert_mode
+          - input_boolean.speech_notifications
+          - input_boolean.trash_reminders
+          - input_boolean.disable_autolock_front_door
+          - input_boolean.disable_current_temperature_notification
+          - input_boolean.disable_morning_notification
+          - input_boolean.disable_afternoon_notification
+          - input_boolean.disable_unexpected_motion_notification
+          - input_boolean.disable_device_tampering_notification
+          - input_boolean.disable_washing_machine_notification
+          - input_boolean.disable_dustbin_notification
+          - input_boolean.disable_entry_light_trent_home
+          - input_boolean.disable_entryway_light_frontdoor
+          - input_boolean.disable_livingroom_light_frontdoor
+          - input_boolean.disable_auto_off_outside_heater
+      - type: entities
+        title: Fully Kiosk
+        entities:
+          - switch.fkiosk_screen
+          - sensor.fkiosk
+          - input_boolean.disable_fully_kiosk_screen_front_door
+      - type: entities
+        title: Multisensors
+        entities:
+          - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
+          - sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
+          - sensor.fibaro_system_fgms001zw5_motion_sensor_seismic_intensity
+          - binary_sensor.motion
+          - binary_sensor.tampering
+          - binary_sensor.motion_sensor_158d000165627b
+          - sensor.temperature_158d0001a2e878
+          - sensor.humidity_158d0001a2e878
+      - type: entities
+        title: Battery Levels
+        entities:
+          - sensor.battery_backdoor_sensor
+          - sensor.battery_frontdoor_sensor
+          - sensor.battery_bedroomwindow_sensor
+          - sensor.battery_livingroomwindow1_sensor
+          - sensor.battery_livingroomwindow2_sensor
+          - sensor.battery_livingroomwindow3_sensor
+          - sensor.battery_washingmachine_sensor
+          - sensor.battery_hallway_sensor
+          - sensor.battery_spareswitch_sensor
+          - sensor.battery_bedroomswitch_sensor
+          - sensor.battery_entryswitch_sensor
+          - sensor.battery_bedroomtemp_sensor
+          - sensor.battery_livingroommulti_sensor
+          - sensor.battery_smartlock
+      - type: entities
+        title: Trash Schedule
+        entities:
+          - sensor.trash_day
+          - sensor.trash_pickup_day
+          - input_select.trash_pickup_day
+      - type: entities
+        title: Recycle Schedule
+        entities:
+          - sensor.recycle_day
+          - sensor.recycle_pickup_day
+          - sensor.recycle_pickup_week
+          - input_select.recycle_pickup_day
+          - sensor.current_week
+          - input_select.recycle_pickup_week
+      - type: entities
+        title: Projector Room Remote
+        entities:
+          - switch.projector_power
+          - switch.reciever_power
+          - switch.reciever_volume_up
+          - switch.reciever_volume_down
+          - switch.reciever_hdmi1
+          - switch.reciever_hdmi2
+          - switch.reciever_hdmi3
+          - switch.reciever_hdmi4
+      - type: entities
+        title: Scripts
+        entities:
+          - script.good_night
+          - script.start_air_conditioner
+          - script.stop_air_conditioner
+          - script.start_fan
+          - script.stop_fan
+      - type: entities
+        title: Speech Functions
+        entities:
+          - input_boolean.lastmsg
+          - switch.air_conditioner
+          - switch.fan

@@ -1,0 +1,40 @@
+###############################################################################
+#   @author         :   Trent Stanton
+#   @date           :   22/06/2018
+#   @package        :   Arlo Lights
+#   @description    :   Disabled as Arlo Lights aren't supported
+#   @url            :   
+###############################################################################
+# homeassistant:
+#   customize:
+
+group:
+arlo:
+  name: Arlo
+  control: hidden
+  entities:
+    - device_tracker.google_maps_109209758211303121867
+
+arlo:
+  username: !secret arlo_username
+  password: !secret arlo_password
+
+camera:
+  - platform: arlo
+
+sensor:
+  - platform: arlo
+    monitored_conditions:
+      - captured_today
+      - last_capture
+      - total_cameras
+      - battery_level
+      - signal_strength
+
+alarm_control_panel:
+  - platform: arlo
+
+###############################################################################
+#                               Automations
+###############################################################################
+# automation:
