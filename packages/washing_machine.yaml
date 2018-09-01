@@ -9,10 +9,8 @@ homeassistant:
   customize:
     sensor.washing_machine_status:
       icon: mdi:washing-machine
-    switch.plug_158d0001debe7a:
-      friendly_name: Washing Machine Switch
-    binary_sensor.door_window_sensor_158d00019f886a:
-      friendly_name: Washing Machine Door Sensor
+    binary_sensor.door_washingmachine:
+      device_class: opening
 
 group:
   washing_machine:
@@ -20,8 +18,8 @@ group:
     control: hidden
     entities:
       - sensor.washing_machine_status
-      - switch.plug_158d0001debe7a
-      - sensor.washing_machine_status
+      - switch.plug_washingmachine
+      - sensor.power_washingmachine
 
 input_boolean:
   disable_washing_machine_notification:
@@ -146,7 +144,7 @@ automation:
   - alias: Set washing machine dirty when door opens
     trigger:
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d00019f886a
+        entity_id: binary_sensor.door_washingmachine
         to: 'on'
     condition:
       condition: or

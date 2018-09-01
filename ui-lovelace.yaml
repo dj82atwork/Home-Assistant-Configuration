@@ -125,7 +125,7 @@ views:
         title: Front Door
         entities:
           - lock.front_door
-          - binary_sensor.door_window_sensor_158d00019f3211
+          - binary_sensor.door_frontdoor
           - light.entry
         camera_image: camera.front_door
       - type: picture-glance
@@ -141,16 +141,16 @@ views:
           - lock.front_door
           - alarm_control_panel.ha_alarm
           - binary_sensor.motion
-          - binary_sensor.motion_sensor_158d000165627b
+          - binary_sensor.motion_hallway
       - type: entities
         title: Door and Window Sensors
         entities:
           - sensor.door_count
           - sensor.window_count
-          - binary_sensor.door_window_sensor_158d00019f3211
+          - binary_sensor.door_frontdoor
           - binary_sensor.door_window_sensor_158d000186f0ec
-          - binary_sensor.door_window_sensor_158d0001d7acfc
-          - binary_sensor.door_window_sensor_158d0001e037dc
+          - binary_sensor.window_bedroom
+          - binary_sensor.window_livingroom1
           - binary_sensor.door_window_sensor_158d00019fbe38
           - binary_sensor.door_window_sensor_158d0001a4a872
   - name: Lights
@@ -221,7 +221,8 @@ views:
         show_header_toggle: false
         entities:
           - sensor.washing_machine_status
-          - switch.plug_158d0001debe7a
+          - switch.plug_washingmachine
+          - sensor.power_washingmachine
       - type: entities
         title: UPS
         entities:
@@ -250,6 +251,7 @@ views:
           - input_boolean.disable_auto_off_outside_heater
       - type: entities
         title: Zigbee Pairing
+        show_header_toggle: false
         entities:
           - input_boolean.zigbee_permit_join
           - timer.zigbee_permit_join
@@ -269,9 +271,9 @@ views:
           - sensor.fibaro_system_fgms001zw5_motion_sensor_seismic_intensity
           - binary_sensor.motion
           - binary_sensor.tampering
-          - binary_sensor.motion_sensor_158d000165627b
-          - sensor.temperature_158d0001a2e878
-          - sensor.humidity_158d0001a2e878
+          - binary_sensor.motion_hallway
+          - sensor.temperature_bedroom
+          - sensor.humidity_bedroom
       - type: entities
         title: Battery Levels
         entities:

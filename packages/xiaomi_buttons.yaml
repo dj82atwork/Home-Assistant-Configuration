@@ -38,7 +38,7 @@ automation:
     - platform: event
       event_type: click
       event_data:
-        entity_id: binary_sensor.switch_158d0001a21086
+        entity_id: sensor.switch_trent_bedside
         click_type: double
     action:
     - service: light.on
@@ -74,7 +74,7 @@ automation:
     - platform: event
       event_type: click
       event_data:
-        entity_id: binary_sensor.switch_158d000186e632
+        entity_id: sensor.switch_rachel_bedside
         click_type: single
     action:
     - service: light.toggle
@@ -90,7 +90,7 @@ automation:
     - platform: event
       event_type: click
       event_data:
-        entity_id: binary_sensor.switch_158d000186e632
+        entity_id: sensor.switch_rachel_bedside
         click_type: double
     action:
     - service: light.on
@@ -109,7 +109,7 @@ automation:
     - platform: event
       event_type: click
       event_data:
-        entity_id: binary_sensor.switch_158d000186e632
+        entity_id: sensor.switch_rachel_bedside
         click_type: hold
     action:
     - service: script.turn_on

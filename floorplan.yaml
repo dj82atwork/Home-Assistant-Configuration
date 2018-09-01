@@ -138,11 +138,11 @@
                 #  WINDOWS  #
         - name: Windows
           entities:
-            - binary_sensor.door_window_sensor_158d0001d7acfc
-            - binary_sensor.door_window_sensor_158d0001e037dc
+            - binary_sensor.window_bedroom
+            - binary_sensor.window_livingroom1
             - binary_sensor.door_window_sensor_158d00019fbe38
             - binary_sensor.door_window_sensor_158d0001a4a872
-            - binary_sensor.door_window_sensor_158d00019f3211
+            - binary_sensor.door_frontdoor
             - binary_sensor.door_window_sensor_158d000186f0ec
           states:
             - state: 'off'

@@ -71,3 +71,8 @@ binary_sensor:
         prob_given_true: 1
         platform: 'state'
         to_state: 'home'
+# Xiaomi Gateway integration (Moved to Xigbee2MQTT)
+xiaomi_aqara:
+  gateways:
+   - mac: !secret xiaomimac
+     key: !secret xiaomikey

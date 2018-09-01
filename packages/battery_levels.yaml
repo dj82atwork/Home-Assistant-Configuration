@@ -59,32 +59,32 @@ sensor:
   - platform: template
     sensors:
       battery_backdoor_sensor:
-        value_template: '{% if states.binary_sensor.door_window_sensor_158d000186f0ec is not none %}
-          {{ states.binary_sensor.door_window_sensor_158d000186f0ec.attributes.battery_level }}
+        value_template: '{% if states.binary_sensor.door_backdoor is not none %}
+          {{ states.binary_sensor.door_backdoor.attributes.battery_level }}
           {% else %}
             n/a
           {% endif %}'
         unit_of_measurement: '%'
         friendly_name: 'Back Door Sensor Battery'
       battery_frontdoor_sensor:
-        value_template: '{% if states.binary_sensor.door_window_sensor_158d00019f3211 is not none %}
-          {{ states.binary_sensor.door_window_sensor_158d00019f3211.attributes.battery_level }}
+        value_template: '{% if states.binary_sensor.door_frontdoor is not none %}
+          {{ states.binary_sensor.door_frontdoor.attributes.battery_level }}
           {% else %}
             n/a
           {% endif %}'
         unit_of_measurement: '%'
         friendly_name: 'Front Door Sensor Battery'
       battery_bedroomwindow_sensor:
-        value_template: '{% if states.binary_sensor.door_window_sensor_158d0001d7acfc is not none %}
-          {{ states.binary_sensor.door_window_sensor_158d0001d7acfc.attributes.battery_level }}
+        value_template: '{% if states.binary_sensor.window_bedroom is not none %}
+          {{ states.binary_sensor.window_bedroom.attributes.battery_level }}
           {% else %}
             n/a
           {% endif %}'
         unit_of_measurement: '%'
         friendly_name: 'Bedroom Window Sensor Battery'
       battery_livingroomwindow1_sensor:
-        value_template: '{% if states.binary_sensor.door_window_sensor_158d0001e037dc is not none %}
-          {{ states.binary_sensor.door_window_sensor_158d0001e037dc.attributes.battery_level }}
+        value_template: '{% if states.binary_sensor.window_livingroom1 is not none %}
+          {{ states.binary_sensor.window_livingroom1.attributes.battery_level }}
           {% else %}
             n/a
           {% endif %}'
@@ -92,31 +92,31 @@ sensor:
         friendly_name: 'Living Room Window 1 Sensor Battery'
       battery_livingroomwindow2_sensor:
         value_template: '{% if states.door_window_sensor_158d00019fbe38 is not none %}
-          {{ states.binary_sensor.door_window_sensor_158d00019fbe38.attributes.battery_level }}
+          {{ states.binary_sensor.window_livingroom2.attributes.battery_level }}
           {% else %}
             n/a
           {% endif %}'
         unit_of_measurement: '%'
         friendly_name: 'Living Room Window 2 Sensor Battery'
       battery_livingroomwindow3_sensor:
-        value_template: '{% if states.binary_sensor.door_window_sensor_158d0001a4a872 is not none %}
-          {{ states.binary_sensor.door_window_sensor_158d0001a4a872.attributes.battery_level }}
+        value_template: '{% if states.binary_sensor.window_livingroom3 is not none %}
+          {{ states.binary_sensor.window_livingroom3.attributes.battery_level }}
           {% else %}
             n/a
           {% endif %}'
         unit_of_measurement: '%'
         friendly_name: 'Living Room Window 3 Sensor Battery'
       battery_washingmachine_sensor:
-        value_template: '{% if states.binary_sensor.door_window_sensor_158d00019f886a is not none %}
-          {{ states.binary_sensor.door_window_sensor_158d00019f886a.attributes.battery_level }}
+        value_template: '{% if states.binary_sensor.door_washingmachine is not none %}
+          {{ states.binary_sensor.door_washingmachine.attributes.battery_level }}
           {% else %}
             n/a
           {% endif %}'
         unit_of_measurement: '%'
         friendly_name: 'Washing Machine Sensor Battery'
       battery_hallway_sensor:
-        value_template: '{% if states.binary_sensor.motion_sensor_158d000165627b is not none %}
-          {{ states.binary_sensor.motion_sensor_158d000165627b.attributes.battery_level }}
+        value_template: '{% if states.binary_sensor.motion_hallway is not none %}
+          {{ states.binary_sensor.motion_hallway.attributes.battery_level }}
           {% else %}
             n/a
           {% endif %}'

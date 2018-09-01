@@ -13,23 +13,23 @@ homeassistant:
     sensor.window_count:
       friendly_name: Open Window Count
       icon: mdi:window-open
-    binary_sensor.door_window_sensor_158d000186f0ec:
-      friendly_name: Back Door Sensor
+    binary_sensor.door_frontdoor:
       device_class: door
-    binary_sensor.door_window_sensor_158d00019f3211:
-      friendly_name: Front Door Sensor
+    binary_sensor.door_backdoor:
       device_class: door
-    binary_sensor.door_window_sensor_158d0001d7acfc:
-      friendly_name: Bedroom Window Sensor
+    binary_sensor.window_bedroom:
       device_class: window
-    binary_sensor.door_window_sensor_158d0001e037dc:
-      friendly_name: Living Room Window Sensor 1
+    binary_sensor.window_projectorroom:
       device_class: window
-    binary_sensor.door_window_sensor_158d00019fbe38:
-      friendly_name: Living Room Window Sensor 2
+    binary_sensor.window_livingroom1:
       device_class: window
-    binary_sensor.door_window_sensor_158d0001a4a872:
-      friendly_name: Living Room Window Sensor 3
+    binary_sensor.window_livingroom2:
+      device_class: window
+    binary_sensor.window_livingroom3:
+      device_class: window
+    binary_sensor.window_diningroom1:
+      device_class: window
+    binary_sensor.window_diningroom2:
       device_class: window
 
 group:
@@ -39,13 +39,15 @@ group:
     entities:
       - sensor.door_count
       - sensor.window_count
-      - binary_sensor.door_window_sensor_158d00019f3211
-      - binary_sensor.door_window_sensor_158d000186f0ec
-      - binary_sensor.door_window_sensor_158d0001d7acfc
-      - binary_sensor.door_window_sensor_158d0001e037dc
-      - binary_sensor.door_window_sensor_158d00019fbe38
-      - binary_sensor.door_window_sensor_158d0001a4a872
-
+      - binary_sensor.door_frontdoor
+      - binary_sensor.door_backdoor
+      - binary_sensor.window_bedroom
+      - binary_sensor.window_projectorroom
+      - binary_sensor.window_livingroom1
+      - binary_sensor.window_livingroom2
+      - binary_sensor.window_livingroom3
+      - binary_sensor.window_diningroom1
+      - binary_sensor.window_diningroom2
 sensor:
   - platform: template
     sensors:

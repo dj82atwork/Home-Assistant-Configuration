@@ -13,7 +13,7 @@ group:
       - lock.front_door
       - alarm_control_panel.ha_alarm
       - binary_sensor.motion
-      - binary_sensor.motion_sensor_158d000165627b
+      - binary_sensor.motion_hallway
 
 # MQTT Control Panel
 alarm_control_panel:
@@ -36,16 +36,16 @@ automation:
       entity_id: binary_sensor.motion_sensor_158d00015b5ae2
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d000165627b
+      entity_id: binary_sensor.motion_hallway
       to: 'on'
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d00016be35b
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d000186f0ec
+      entity_id: binary_sensor.door_backdoor
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d00019f3211
+      entity_id: binary_sensor.door_frontdoor
       to: 'on'
     condition:
     - condition: state

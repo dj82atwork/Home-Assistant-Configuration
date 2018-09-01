@@ -33,7 +33,7 @@ livingroom_motion:
 hallway_motion:
     widget_type: binary_sensor
     title: Hallway Motion
-    entity: binary_sensor.motion_sensor_158d000165627b
+    entity: binary_sensor.motion_hallway
     icon_on: mdi-run
     icon_off: mdi-walk
     title_style: "font-size: 120%"

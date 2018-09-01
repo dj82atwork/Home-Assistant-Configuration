@@ -96,7 +96,7 @@ bedroom_temperature:
     title: Bedroom Temperature
     units: "&deg;C"
     precision: 0
-    entity: sensor.temperature_158d0001a2e878
+    entity: sensor.temperature_bedroom
     title_style: "font-size: 120%"
     widget_style: "color: $blue; font-size: 120%"
     unit_style: "color: $blue"
@@ -106,7 +106,7 @@ bedroom_humidity:
     title: Bedroom Humidity
     units: "%"
     precision: 0
-    entity: sensor.humidity_158d0001a2e878
+    entity: sensor.humidity_bedroom
     title_style: "font-size: 120%"
     widget_style: "color: $blue; font-size: 120%"
     unit_style: "color: $blue"
@@ -124,7 +124,7 @@ livingroom_motion:
 hallway_motion:
     widget_type: binary_sensor
     title: Hallway Motion
-    entity: binary_sensor.motion_sensor_158d000165627b
+    entity: binary_sensor.motion_hallway
     icon_on: mdi-run
     icon_off: mdi-walk
     title_style: "font-size: 120%"
