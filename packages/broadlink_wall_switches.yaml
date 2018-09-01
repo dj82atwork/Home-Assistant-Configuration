@@ -1,0 +1,34 @@
+###############################################################################
+#   @author         :   Trent Stanton
+#   @date           :   1/09/2018
+#   @package        :   Broadlink AC Switches
+#   @description    :   
+#   @url            :   
+###############################################################################
+homeassistant:
+  customize:
+    switch.outside_heater:
+    icon: mdi:fire
+    switch.living_room_lamp:
+    icon: mdi:lamp
+switch:
+  - platform: broadlink
+    host: !secret broadlink_sw1_ip
+    mac: '34:EA:34:F5:E4:AC'
+    type: spmini2
+    friendly_name: 'Living Room Lamp'
+  - platform: broadlink
+    host: !secret broadlink_sw2_ip
+    mac: '34:EA:34:F5:E4:B0'
+    type: spmini2
+    friendly_name: 'Switch 2'
+  - platform: broadlink
+    host: !secret broadlink_sw3_ip
+    mac: '34:EA:34:F5:E1:18'
+    type: spmini2
+    friendly_name: 'Switch 3'
+  - platform: broadlink
+    host: !secret broadlink_sw4_ip
+    mac: '34:EA:34:F5:E4:F7'
+    type: spmini2
+    friendly_name: 'Outside Heater'

@@ -9,10 +9,12 @@ location.txt
 mqttssl
 appdaemon/*.log*
 custom_components/customizer/
+custom_components/media_player/
 www/*.png
 www/custom_ui/floorplan/lib/
 www/custom_ui/state-card-floorplan.html
 www/harmony/
+www/custom-lovelace
 appdaemon/compiled
 OZW_Log.txt
 home-assistant.log
@@ -39,6 +41,7 @@ pyozw.sqlite
 !/.gitignore
 .storage
 *.config_entries
+*.tmp
 hadaemon
 __pycache__/
 entity_registry.yaml

@@ -5,6 +5,39 @@
 #   @description    :   
 #   @url            :   
 ###############################################################################
+homeassistant:
+  customize:
+    sensor.fibaro_system_fgms001zw5_motion_sensor_temperature:
+      friendly_name: Living Room Temperature
+      icon: mdi:thermometer
+    sensor.fibaro_system_fgms001zw5_motion_sensor_luminance:
+      friendly_name: Living Room Luminance
+      icon: mdi:brightness-7
+    sensor.fibaro_system_fgms001zw5_motion_sensor_seismic_intensity:
+      friendly_name: Living Room Seismic Intensity
+      icon: mdi:vibrate
+    binary_sensor.motion:
+      friendly_name: Living Room Motion
+    binary_sensor.tampering:
+      friendly_name: Living Room Sensor Tampering
+      icon: mdi:shield-outline
+
+group:
+  multisensor:
+    name: Multisensors
+    entities:
+      - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
+  #    - sensor.fibaro_system_fgms001zw5_motion_sensor_sourcenodeid
+      - sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
+      - sensor.fibaro_system_fgms001zw5_motion_sensor_seismic_intensity
+  #    - sensor.fibaro_system_fgms001zw5_motion_sensor_general
+  #    - sensor.fibaro_system_fgms001zw5_motion_sensor_burglar
+      - binary_sensor.motion
+      - binary_sensor.tampering
+      - binary_sensor.motion_sensor_158d000165627b
+      - sensor.temperature_158d0001a2e878
+      - sensor.humidity_158d0001a2e878
+
 binary_sensor:
   - platform: template
     sensors:

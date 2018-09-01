@@ -1,0 +1,73 @@
+###############################################################################
+#   @author         :   Trent Stanton
+#   @date           :   1/09/2018
+#   @package        :   Archive Configuration
+#   @description    :   Disabled Package for Archival Configuration Snippits - DO NOT ENABLE
+#   @url            :   
+###############################################################################
+
+mqtt:
+  broker: !secret cloud_mqtt_broker
+  port: !secret cloud_mqtt_port
+  username: !secret cloud_mqtt_username
+  password: !secret cloud_mqtt_password
+  
+camera:
+- platform: onvif
+  name: front_door
+  host: !secret sensor_onvif_host1
+  username: !secret sensor_onvif_username
+  password: !secret sensor_onvif_password
+  port: !secret sensor_onvif_port
+- platform: onvif
+  name: back_deck
+  host: !secret sensor_onvif_host2
+  username: !secret sensor_onvif_username
+  password: !secret sensor_onvif_password
+  port: !secret sensor_onvif_port
+  
+# Media Player - Spotify
+
+media_player:
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
+    
+scene:
+# Living Room Light Full Brightness
+  - name: Living Room Light Full
+    entities:
+      light.living_room:
+        state: on
+        brightness_pct: 100
+        color_temp: 345
+# All Lights Full Brightness
+  - name: All Lights Full Reset
+    entities:
+      group.all_lights:
+        state: on
+        brightness_pct: 100
+        color_temp: 345
+
+dialogflow:
+# Home Assistant Dialogflow (Testing responses using Dialogflow)
+  intent_script:
+    GetHomeTemperature:
+      speech:
+        text: The temperature at home is {{ states('sensor.fibaro_system_fgms001zw5_motion_sensor_temperature') }} degrees
+        
+# Bayesian Sensor - Home Sensor
+binary_sensor:
+  - platform: bayesian
+    prior: 0.75
+    name: 'Trent Home'
+    probability_threshold: 0.95
+    observations:
+      - entity_id: 'device_tracker.google_maps_109209758211303121867'
+        prob_given_true: 1
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.1867b0aa918f'
+        prob_given_true: 1
+        platform: 'state'
+        to_state: 'home'

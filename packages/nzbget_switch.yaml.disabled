@@ -1,0 +1,13 @@
+###############################################################################
+#   @author         :   Trent Stanton
+#   @date           :   1/09/2018
+#   @package        :   NZBGet Switch
+#   @description    :   TEST NZBGET Switch - Custom Component
+#   @url            :   
+###############################################################################
+
+switch:
+- platform: nzbget
+  host: !secret nzbget_ipaddress
+  username: !secret nzbget_username
+  password: !secret nzbget_password

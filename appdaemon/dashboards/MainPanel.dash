@@ -51,7 +51,7 @@ current_humidity:
 trent_presence:
     widget_type: device_tracker
     title: Trent
-    device: trents_galaxy
+    device: google_maps_109209758211303121867
     icon_on: mdi-human-male
     icon_off: mdi-human-male
     title_style: "font-size: 120%"

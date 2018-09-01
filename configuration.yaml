@@ -62,7 +62,6 @@ sun:
 
 # Text to speech
 tts:
-
 - platform: amazon_polly
   aws_access_key_id: !secret aws_access_key_ID
   aws_secret_access_key: !secret aws_secret_access_key
@@ -74,12 +73,11 @@ recorder:
   purge_interval: 2
   purge_keep_days: 14
 
-# Media Player - Spotify, no longer used.
-
-# media_player:
-#   - platform: spotify
-#     client_id: !secret spotify_client_id
-#     client_secret: !secret spotify_client_secret
+sensor:
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
 
 # Camera (Synology)
 camera:
@@ -89,18 +87,6 @@ camera:
     password: !secret synologycam_password
     verify_ssl: False
     timeout: 15
-#  - platform: onvif
-#    name: front_door
-#    host: !secret sensor_onvif_host1
-#    username: !secret sensor_onvif_username
-#    password: !secret sensor_onvif_password
-#    port: !secret sensor_onvif_port
-#  - platform: onvif
-#    name: back_deck
-#    host: !secret sensor_onvif_host2
-#    username: !secret sensor_onvif_username
-#    password: !secret sensor_onvif_password
-#    port: !secret sensor_onvif_port
 
 # IFTTT Key
 ifttt:
@@ -109,21 +95,21 @@ ifttt:
 # iOS App
 ios:
 
-# Homekit
-homekit:
-
 # Device Tracking
+# Zigbee2mqtt Discovery
 # MQTT (Local Broker)
 mqtt:
+  discovery: true
   broker: !secret local_mqtt_broker
   port: !secret local_mqtt_port
   username: !secret local_mqtt_username
   password: !secret local_mqtt_password
-
-#  broker: !secret cloud_mqtt_broker
-#  port: !secret cloud_mqtt_port
-#  username: !secret cloud_mqtt_username
-#  password: !secret cloud_mqtt_password
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
 
 device_tracker:
 # Google Maps API Tracking
@@ -143,10 +129,9 @@ device_tracker:
 
 #ZWave Devices
 zwave:
-  usb_path: /dev/ttyACM0
+  usb_path: /dev/ttyACM1
   network_key: !secret secure_zwave_key
-#  polling_interval: 60000
-#  autoheal: true
+  autoheal: true
 
 # Logitech Harmony Living Room
 remote:
@@ -188,20 +173,4 @@ zone 3:
 ############
 
 # Single Files
-
-#dialogflow: !include includes/dialogflow.yaml
-light: !include includes/light.yaml
-notify: !include includes/notify.yaml
-weblink: !include includes/weblink.yaml
-binary_sensor: !include includes/binary_sensor.yaml
 group: !include includes/group.yaml
-google_assistant: !include includes/google_assistant.yaml
-sensor: !include includes/sensor.yaml
-scene: !include includes/scene.yaml
-switch: !include includes/switch.yaml
-#image_processing: !include includes/image_processing.yaml
-
-# Merge List
-
-# Non Editor Automations
-automation: !include_dir_merge_list includes/automation

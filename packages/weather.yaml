@@ -5,6 +5,13 @@
 #   @description    :   Weather information for Home Assistant interface
 #   @url            :   
 ###############################################################################
+homeassistant:
+  customize:
+    sensor.weather_minimum:
+    icon: mdi:thermometer
+    sensor.weather_maximum:
+    icon: mdi:thermometer
+
 group:
   weather:
     name: Weather
@@ -47,8 +54,8 @@ sensor:
 #      - minutely_summary
       - hourly_summary
       - daily_summary
-      - temperature_max
-      - temperature_min
+      - temperature_high
+      - temperature_low
 #      - apparent_temperature_max
 #      - apparent_temperature_min
 #      - precip_intensity_max

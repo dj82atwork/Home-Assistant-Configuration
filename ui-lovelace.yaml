@@ -1,4 +1,12 @@
 name: Home
+# External Sources
+resources:
+  - url: /local/tracker-card.js?v=0
+    type: js
+  - url: /local/custom-lovelace/cartoon-weather-card/cartoon-weather-card.js?v=1
+    type: js
+  - url: /local/custom-lovelace/monster-card/monster-card.js?v=1
+    type: js
 views:
   - name: Home
     icon: mdi:home
@@ -95,6 +103,7 @@ views:
           - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
       - type: entities
         title: AC Scheduler
+        show_header_toggle: false
         entities:
           - input_boolean.ac_on_schedule_active
           - input_text.ac_on_schedule
@@ -107,6 +116,7 @@ views:
           - input_number.fan_speed
       - type: entities
         title: Robot Vacuum
+        show_header_toggle: false
         entities:
           - vacuum.xiaomi_vacuum_cleaner
           - input_boolean.disable_daily_vacuum
@@ -184,12 +194,13 @@ views:
           - weblink.radarr
       - type: entities
         title: Network
+        show_header_toggle: false
         entities:
           - sensor.speedtest_ping
           - sensor.speedtest_download
           - sensor.speedtest_upload
           - sensor.nzbget_speed
-          - switch.nzbget_switch
+#          - switch.nzbget_switch
           - sensor.uptime
           - sensor.xiaomigateway
           - sensor.livingroomgooglehome
@@ -214,6 +225,7 @@ views:
           - sensor.status_volume_3
       - type: entities
         title: Washing Machine
+        show_header_toggle: false
         entities:
           - sensor.washing_machine_status
           - switch.plug_158d0001debe7a
@@ -244,7 +256,14 @@ views:
           - input_boolean.disable_livingroom_light_frontdoor
           - input_boolean.disable_auto_off_outside_heater
       - type: entities
+        title: Zigbee Pairing
+        entities:
+          - input_boolean.zigbee_permit_join
+          - timer.zigbee_permit_join
+          - sensor.bridge_state
+      - type: entities
         title: Fully Kiosk
+        show_header_toggle: false
         entities:
           - switch.fkiosk_screen
           - sensor.fkiosk
@@ -294,6 +313,7 @@ views:
           - input_select.recycle_pickup_week
       - type: entities
         title: Projector Room Remote
+        show_header_toggle: false
         entities:
           - switch.projector_power
           - switch.reciever_power
@@ -313,7 +333,15 @@ views:
           - script.stop_fan
       - type: entities
         title: Speech Functions
+        show_header_toggle: false
         entities:
           - input_boolean.lastmsg
           - switch.air_conditioner
           - switch.fan
+      - type: custom:tracker-card
+        title: Custom Updates
+        trackers:
+          - sensor.custom_card_tracker
+#          - sensor.custom_component_tracker
+      - type: custom:cartoon-weather-card
+        group: weather.yweather
