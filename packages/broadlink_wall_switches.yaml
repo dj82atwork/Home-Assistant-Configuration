@@ -8,9 +8,9 @@
 homeassistant:
   customize:
     switch.outside_heater:
-    icon: mdi:fire
+      icon: mdi:fire
     switch.living_room_lamp:
-    icon: mdi:lamp
+      icon: mdi:lamp
 switch:
   - platform: broadlink
     host: !secret broadlink_sw1_ip

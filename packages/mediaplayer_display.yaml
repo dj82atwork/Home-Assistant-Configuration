@@ -1,10 +1,10 @@
 ###############################################################################
 #   @author         :   Trent Stanton
-#   @date           :   10/03/2018
+#   @date           :   1/09/2018
 #   @package        :   Display Media Players
 #   @description    :   Display / Hide Media Players from the Home Assistant Default View when not being used.
 #   @url            :   
-#   NOT NEEDED ONCE MIGRATED TO LOVELACE
+#   Some configurations not needed in Lovelace
 ###############################################################################
 homeassistant:
   customize:
@@ -19,6 +19,35 @@ homeassistant:
     media_player.bed_room:
       friendly_name: Bed Room Chromecast
 
+wake_on_lan:
+
+media_player:
+  - platform: webostv
+    host: !secret webostv_host
+    name: Living Room TV
+    timeout: 5
+    customize:
+      sources:
+        - Live TV
+        - Plex
+        - PS4
+        - Xbox One
+        - Netflix
+        - YouTube
+        - 9Now
+        - ABC iview
+        - SBS on Demand
+        - LG Content Store
+        - Web Browser
+        - TV Guide
+        - TV Scheduler
+        - HDMI 2
+        - HDMI 4
+    turn_on_action:
+        service: wake_on_lan.send_magic_packet
+        data:
+          mac: !secret webostv_mac
+
 group:
   media_living_room_home:
     name: Media Living Room Home
@@ -27,7 +56,7 @@ group:
   media_living_room_tv:
     name: Media Living TV
     entities:
-      - media_player.tv_ua55ju6400
+      - media_player.living_room_tv
   media_living_room:
     name: Media Living Room
     entities:

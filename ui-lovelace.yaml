@@ -23,16 +23,9 @@ views:
         card:
           type: media-control
           entity: media_player.living_room_home
-      - type: entity-filter
-        entities:
-          - media_player.tv_ua55ju6400
-        state_filter:
-          - 'playing'
-          - 'paused'
-        show_empty: false
-        card:
-          type: media-control
-          entity: media_player.tv_ua55ju6400
+# Always Show Living Room TV (Due to WOL)
+      - type: media-control
+        entity: media_player.living_room_tv
       - type: entity-filter
         entities:
           - media_player.living_room

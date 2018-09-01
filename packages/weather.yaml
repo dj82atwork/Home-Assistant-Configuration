@@ -8,9 +8,9 @@
 homeassistant:
   customize:
     sensor.weather_minimum:
-    icon: mdi:thermometer
+      icon: mdi:thermometer
     sensor.weather_maximum:
-    icon: mdi:thermometer
+      icon: mdi:thermometer
 
 group:
   weather:
