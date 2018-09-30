@@ -8,6 +8,7 @@
 location.txt
 mqttssl
 appdaemon/*.log*
+custom_components/custom_updater.py
 custom_components/customizer/
 custom_components/media_player/
 www/*.png
@@ -15,6 +16,8 @@ www/custom_ui/floorplan/lib/
 www/custom_ui/state-card-floorplan.html
 www/harmony/
 www/custom-lovelace
+www/tracker-card.js
+www/vertical-stack-in-card.js
 appdaemon/compiled
 OZW_Log.txt
 home-assistant.log

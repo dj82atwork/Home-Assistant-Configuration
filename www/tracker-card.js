@@ -77,7 +77,7 @@ class TrackerCard extends HTMLElement {
   }
 
   _filterCards(attributes) {
-    return Object.entries(attributes).filter(elem => (elem[0] != "friendly_name" && elem[0] != "homebridge_hidden" && elem[0] != "domain" && elem[0] != "repo" && elem[0] != "hidden"));
+    return Object.entries(attributes).filter(elem => (elem[0] != "friendly_name" && elem[0] != "homebridge_hidden" && elem[0] != "domain" && elem[0] != "has_update" && elem[0] != "repo" && elem[0] != "hidden"));
   }
 
   set hass(hass) {
@@ -104,6 +104,7 @@ class TrackerCard extends HTMLElement {
         if (list !== undefined && list.length > 0) {
           const updated_content = `
             ${list.map(elem => `
+
                 <tr>
                   <td class='name'><a href="${elem[1].repo?elem[1].repo:'#'}" target='_blank'>${elem[0]}</a></td>
                   <td>${elem[1].local?elem[1].local:'n/a'}</td>

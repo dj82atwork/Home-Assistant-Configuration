@@ -7,148 +7,161 @@
 ###############################################################################
 homeassistant:
   customize:
-    sensor.battery_backdoor_sensor:
-      icon: mdi:car-battery
-    sensor.battery_frontdoor_sensor:
-      icon: mdi:car-battery
-    sensor.battery_bedroomwindow_sensor:
-      icon: mdi:car-battery
-    sensor.battery_livingroomwindow1_sensor:
-      icon: mdi:car-battery
-    sensor.battery_livingroomwindow2_sensor:
-      icon: mdi:car-battery
-    sensor.battery_livingroomwindow3_sensor:
-      icon: mdi:car-battery
-    sensor.battery_washingmachine_sensor:
-      icon: mdi:car-battery
-    sensor.battery_hallway_sensor:
-      icon: mdi:car-battery
+    sensor.back_door_sensor_battery:
+      device_class: battery
+    sensor.front_door_sensor_battery:
+      device_class: battery
+    sensor.bedroom_window_sensor_battery:
+      device_class: battery
+    sensor.projector_room_window_sensor_battery:
+      device_class: battery
+    sensor.living_room_window_1_sensor_battery:
+      device_class: battery
+    sensor.living_room_window_2_sensor_battery:
+      device_class: battery
+    sensor.living_room_window_3_sensor_battery:
+      device_class: battery
+    sensor.dining_room_window_1_sensor_battery:
+      device_class: battery
+    sensor.dining_room_window_2_sensor_battery:
+      device_class: battery
+    sensor.washing_machine_sensor_battery:
+      device_class: battery
+    sensor.hallway_sensor_battery:
+      device_class: battery
     sensor.battery_spareswitch_sensor:
-      icon: mdi:car-battery
+      device_class: battery
     sensor.battery_bedroomswitch_sensor:
-      icon: mdi:car-battery
+      device_class: battery
     sensor.battery_entryswitch_sensor:
-      icon: mdi:car-battery
+      device_class: battery
     sensor.battery_bedroomtemp_sensor:
-      icon: mdi:car-battery
+      device_class: battery
     sensor.battery_livingroommulti_sensor:
-      icon: mdi:car-battery
+      device_class: battery
     sensor.battery_smartlock:
-      icon: mdi:car-battery
+      device_class: battery
+    sensor.battery_trentbedsideswitch_sensor:
+      device_class: battery
+    sensor.battery_rachelbedsideswitch_sensor:
+      device_class: battery
 
 group:
   Battery Levels:
     control: hidden
     entities:
-      - sensor.battery_backdoor_sensor
-      - sensor.battery_frontdoor_sensor
-      - sensor.battery_bedroomwindow_sensor
-      - sensor.battery_livingroomwindow1_sensor
-      - sensor.battery_livingroomwindow2_sensor
-      - sensor.battery_livingroomwindow3_sensor
-      - sensor.battery_washingmachine_sensor
-      - sensor.battery_hallway_sensor
+      - sensor.back_door_sensor_battery
+      - sensor.front_door_sensor_battery
+      - sensor.bedroom_window_sensor_battery
+      - sensor.projector_room_window_sensor_battery
+      - sensor.living_room_window_1_sensor_battery
+      - sensor.living_room_window_2_sensor_battery
+      - sensor.living_room_window_3_sensor_battery
+      - sensor.dining_room_window_1_sensor_battery
+      - sensor.dining_room_window_2_sensor_battery
+      - sensor.washing_machine_sensor_battery
+      - sensor.hallway_sensor_battery
       - sensor.battery_spareswitch_sensor
-      - sensor.battery_bedroomswitch_sensor
+      - sensor.battery_trentbedsideswitch_sensor
+      - sensor.battery_rachelbedsideswitch_sensor
       - sensor.battery_entryswitch_sensor
       - sensor.battery_bedroomtemp_sensor
       - sensor.battery_livingroommulti_sensor
       - sensor.battery_smartlock
 
 sensor:
+  - platform: mqtt
+    name: "Back Door Sensor Battery"
+    state_topic: "zigbee2mqtt/0x00158d000186f0ec"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.battery }}"
+  - platform: mqtt
+    name: "Front Door Sensor Battery"
+    state_topic: "zigbee2mqtt/0x00158d00019f3211"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.battery }}"
+  - platform: mqtt
+    name: "Bedroom Window Sensor Battery"
+    state_topic: "zigbee2mqtt/0x00158d0001d7acfc"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.battery }}"
+  - platform: mqtt
+    name: "Projector Room Window Sensor Battery"
+    state_topic: "zigbee2mqtt/0x00158d0001e037b3"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.battery }}"
+  - platform: mqtt
+    name: "Living Room Window 1 Sensor Battery"
+    state_topic: "zigbee2mqtt/0x00158d0001a4a872"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.battery }}"
+  - platform: mqtt
+    name: "Living Room Window 2 Sensor Battery"
+    state_topic: "zigbee2mqtt/0x00158d00019fbe38"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.battery }}"
+  - platform: mqtt
+    name: "Living Room Window 3 Sensor Battery"
+    state_topic: "zigbee2mqtt/0x00158d0001e037dc"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.battery }}"
+  - platform: mqtt
+    name: "Dining Room Window 1 Sensor Battery"
+    state_topic: "zigbee2mqtt/0x00158d0001e0343b"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.battery }}"
+  - platform: mqtt
+    name: "Dining Room Window 2 Sensor Battery"
+    state_topic: "zigbee2mqtt/0x00158d0001d63977"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.battery }}"
+  - platform: mqtt
+    name: "Washing Machine Sensor Battery"
+    state_topic: "zigbee2mqtt/0x00158d00019f886a"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.battery }}"
+  - platform: mqtt
+    name: "Hallway Sensor Battery"
+    state_topic: "zigbee2mqtt/0x00158d000165627b"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.battery }}"
   - platform: template
     sensors:
-      battery_backdoor_sensor:
-        value_template: '{% if states.binary_sensor.door_backdoor is not none %}
-          {{ states.binary_sensor.door_backdoor.attributes.battery_level }}
-          {% else %}
-            n/a
-          {% endif %}'
-        unit_of_measurement: '%'
-        friendly_name: 'Back Door Sensor Battery'
-      battery_frontdoor_sensor:
-        value_template: '{% if states.binary_sensor.door_frontdoor is not none %}
-          {{ states.binary_sensor.door_frontdoor.attributes.battery_level }}
-          {% else %}
-            n/a
-          {% endif %}'
-        unit_of_measurement: '%'
-        friendly_name: 'Front Door Sensor Battery'
-      battery_bedroomwindow_sensor:
-        value_template: '{% if states.binary_sensor.window_bedroom is not none %}
-          {{ states.binary_sensor.window_bedroom.attributes.battery_level }}
-          {% else %}
-            n/a
-          {% endif %}'
-        unit_of_measurement: '%'
-        friendly_name: 'Bedroom Window Sensor Battery'
-      battery_livingroomwindow1_sensor:
-        value_template: '{% if states.binary_sensor.window_livingroom1 is not none %}
-          {{ states.binary_sensor.window_livingroom1.attributes.battery_level }}
-          {% else %}
-            n/a
-          {% endif %}'
-        unit_of_measurement: '%'
-        friendly_name: 'Living Room Window 1 Sensor Battery'
-      battery_livingroomwindow2_sensor:
-        value_template: '{% if states.door_window_sensor_158d00019fbe38 is not none %}
-          {{ states.binary_sensor.window_livingroom2.attributes.battery_level }}
-          {% else %}
-            n/a
-          {% endif %}'
-        unit_of_measurement: '%'
-        friendly_name: 'Living Room Window 2 Sensor Battery'
-      battery_livingroomwindow3_sensor:
-        value_template: '{% if states.binary_sensor.window_livingroom3 is not none %}
-          {{ states.binary_sensor.window_livingroom3.attributes.battery_level }}
-          {% else %}
-            n/a
-          {% endif %}'
-        unit_of_measurement: '%'
-        friendly_name: 'Living Room Window 3 Sensor Battery'
-      battery_washingmachine_sensor:
-        value_template: '{% if states.binary_sensor.door_washingmachine is not none %}
-          {{ states.binary_sensor.door_washingmachine.attributes.battery_level }}
-          {% else %}
-            n/a
-          {% endif %}'
-        unit_of_measurement: '%'
-        friendly_name: 'Washing Machine Sensor Battery'
-      battery_hallway_sensor:
-        value_template: '{% if states.binary_sensor.motion_hallway is not none %}
-          {{ states.binary_sensor.motion_hallway.attributes.battery_level }}
-          {% else %}
-            n/a
-          {% endif %}'
-        unit_of_measurement: '%'
-        friendly_name: 'Hallway Sensor Battery'
       battery_spareswitch_sensor:
-        value_template: '{% if states.binary_sensor.switch_158d00016449a2 is not none %}
-          {{ states.binary_sensor.switch_158d00016449a2.attributes.battery_level }}
+        value_template: '{% if states.sensor.switch_spare is not none %}
+          {{ states.sensor.switch_spare.attributes.battery }}
           {% else %}
             n/a
           {% endif %}'
         unit_of_measurement: '%'
         friendly_name: 'Spare Switch Sensor Battery'
-      battery_bedroomswitch_sensor:
-        value_template: '{% if states.binary_sensor.switch_158d0001a21086 is not none %}
-          {{ states.binary_sensor.switch_158d0001a21086.attributes.battery_level }}
+      battery_trentbedsideswitch_sensor:
+        value_template: '{% if states.sensor.switch_trent_bedside is not none %}
+          {{ states.sensor.switch_trent_bedside.attributes.battery }}
           {% else %}
             n/a
           {% endif %}'
         unit_of_measurement: '%'
-        friendly_name: 'Bedroom Switch Sensor Battery'
+        friendly_name: 'Trent Bedside Switch Sensor Battery'
+      battery_rachelbedsideswitch_sensor:
+        value_template: '{% if states.sensor.switch_trent_bedside is not none %}
+          {{ states.sensor.switch_trent_bedside.attributes.battery }}
+          {% else %}
+            n/a
+          {% endif %}'
+        unit_of_measurement: '%'
+        friendly_name: 'Rachel Bedside Switch Sensor Battery'
       battery_entryswitch_sensor:
-        value_template: '{% if states.binary_sensor.wall_switch_both_158d000170ef78 is not none %}
-          {{ states.binary_sensor.wall_switch_both_158d000170ef78.attributes.battery_level }}
+        value_template: '{% if states.sensor.wall_switch_entryway is not none %}
+          {{ states.sensor.wall_switch_entryway.attributes.battery }}
           {% else %}
             n/a
           {% endif %}'
         unit_of_measurement: '%'
-        friendly_name: 'Entry Switch Sensor Battery'
+        friendly_name: 'Entryway Switch Sensor Battery'
       battery_bedroomtemp_sensor:
-        value_template: '{% if states.sensor.humidity_158d0001a2e878 is not none %}
-          {{ states.sensor.humidity_158d0001a2e878.attributes.battery_level }}
+        value_template: '{% if states.sensor.temperature_bedroom is not none %}
+          {{ states.sensor.temperature_bedroom.attributes.battery }}
           {% else %}
             n/a
           {% endif %}'

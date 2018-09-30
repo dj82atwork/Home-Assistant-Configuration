@@ -45,11 +45,6 @@ sensor:
       washing_machine_status:
         value_template: '{{ states.input_select.washing_machine_status.state}}'
         friendly_name: 'Washing Machine Status'
-  # Washing Machine Power Usage
-      waching_machine_power:
-        entity_id: switch.plug_158d0001debe7a
-        value_template: '{{ state.attributes.load_power }}'
-        friendly_name: 'Washing Machine Power'
 
 ###############################################################################
 #                               Automations
@@ -71,8 +66,7 @@ automation:
   - alias: Set washing machine active when power detected
     trigger:
       - platform: numeric_state
-        entity_id: switch.plug_158d0001debe7a
-        value_template: '{{ state.attributes.load_power }}'
+        entity_id: sensor.power_washingmachine
         above: 10
     condition:
       condition: or
@@ -98,8 +92,7 @@ automation:
   - alias: Set washing machine finished when power drops
     trigger:
       - platform: numeric_state
-        entity_id: switch.plug_158d0001debe7a
-        value_template: '{{ state.attributes.load_power }}'
+        entity_id: sensor.power_washingmachine
         below: 6
     condition:
       condition: and

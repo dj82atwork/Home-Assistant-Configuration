@@ -1,0 +1,11 @@
+###############################################################################
+#   @author         :   Trent Stanton
+#   @date           :   3/09/2018
+#   @package        :   
+#   @description    :   Embedding and Management of Custom Cards and Components
+#   @url            :   
+###############################################################################
+
+# Custom Updater
+# https://github.com/custom-components/custom_updater
+custom_updater:

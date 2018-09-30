@@ -1,7 +1,7 @@
 ###############################################################################
 #   @author         :   Trent Stanton
 #   @date           :   1/09/2018
-#   @package        :   Display Media Players
+#   @package        :   Media Players
 #   @description    :   Display / Hide Media Players from the Home Assistant Default View when not being used.
 #   @url            :   
 #   Some configurations not needed in Lovelace
@@ -22,6 +22,7 @@ homeassistant:
 wake_on_lan:
 
 media_player:
+  - platform: plex
   - platform: webostv
     host: !secret webostv_host
     name: Living Room TV
@@ -47,6 +48,11 @@ media_player:
         service: wake_on_lan.send_magic_packet
         data:
           mac: !secret webostv_mac
+sensor:
+  - platform: template
+    sensors:
+      living_room_tv_source:
+        value_template: "{{ states.media_player.living_room_tv.attributes.source }}"
 
 group:
   media_living_room_home:
@@ -73,6 +79,34 @@ group:
     name: Media Outside
     entities:
       - media_player.outside
+script:
+  turn_on_plex:
+    alias: "Start Plex"
+    sequence:
+      - service: media_player.turn_on
+        entity_id: media_player.living_room_tv
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.living_room_tv
+          source: 'Plex'
+  turn_on_xboxone:
+    alias: "Start Xbox One"
+    sequence:
+      - service: media_player.turn_on
+        entity_id: media_player.living_room_tv
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.living_room_tv
+          source: 'Xbox One'
+  turn_on_ps4:
+    alias: "Start PS4"
+    sequence:
+      - service: media_player.turn_on
+        entity_id: media_player.living_room_tv
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.living_room_tv
+          source: 'PS4'
 
 ###############################################################################
 #                               Automations
@@ -81,7 +115,6 @@ automation:
 
 ## Media Player Living Room Home
 # Hide Media Player
-
   - alias: 'Hide media_player.living_room_home while not playing'
     hide_entity: true
     trigger:
