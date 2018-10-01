@@ -8,7 +8,6 @@
 location.txt
 mqttssl
 appdaemon/*.log*
-custom_components/custom_updater.py
 custom_components/customizer/
 custom_components/media_player/
 www/*.png
