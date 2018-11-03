@@ -15,22 +15,26 @@ resources:
     type: module
 # Views
 views:
-  - name: Home
+  - id: 0  # Automatically created id
+    name: Home
     icon: mdi:home
     cards:
-      - type: weather-forecast
+      - id: 9683cf167ce742549806e2f95a41e34d  # Automatically created id
+        type: weather-forecast
         entity: weather.melbourne_forecast
-      - type: entity-filter
+      - id: e46668a39f8f462faa417ba41d4c4485  # Automatically created id
+        type: entity-filter
         entities:
           - media_player.living_room_home
         state_filter:
-          - 'playing'
-          - 'paused'
+          - playing
+          - paused
         show_empty: false
         card:
           type: media-control
           entity: media_player.living_room_home
-      - type: vertical-stack
+      - id: 4b371978480f421eb77720a1a80dc093  # Automatically created id
+        type: vertical-stack
         cards:
           - type: picture-elements
             title: Living Room TV
@@ -41,7 +45,7 @@ views:
                 image: /local/icons/media_icons/power-logo.png
                 entity: media_player.living_room_tv
                 state_image:
-                  'off': /local/icons/media_icons/power-logo_active.png
+                  off: /local/icons/media_icons/power-logo_active.png
                 tap_action: call-service
                 service: media_player.toggle
                 service_data:
@@ -59,7 +63,7 @@ views:
                 image: /local/icons/media_icons/plex-logo.png
                 entity: sensor.living_room_tv_source
                 state_image:
-                  'Plex': /local/icons/media_icons/plex-logo_active.png
+                  Plex: /local/icons/media_icons/plex-logo_active.png
                 tap_action: call-service
                 service: script.turn_on_plex
                 style:
@@ -75,7 +79,7 @@ views:
                 image: /local/icons/media_icons/xbox-logo.png
                 entity: sensor.living_room_tv_source
                 state_image:
-                  'Xbox One': /local/icons/media_icons/xbox-logo-active.png
+                  Xbox One: /local/icons/media_icons/xbox-logo-active.png
                 tap_action: call-service
                 service: script.turn_on_xboxone
                 style:
@@ -91,7 +95,7 @@ views:
                 image: /local/icons/media_icons/playstation-logo.png
                 entity: sensor.living_room_tv_source
                 state_image:
-                  'PS4': /local/icons/media_icons/playstation-logo_active.png
+                  PS4: /local/icons/media_icons/playstation-logo_active.png
                 tap_action: call-service
                 service: script.turn_on_ps4
                 style:
@@ -155,56 +159,74 @@ views:
                   z-index: 1
           - type: custom:mini-media-player
             entity: media_player.living_room_tv
-            icon: 'mdi:cast'
+            icon: mdi:cast
             artwork_border: true
             power_color: true
             show_source: true
             volume_stateless: true
-      - type: entity-filter
+      - id: 6f13061bfa214a938f72ff619bf19240  # Automatically created id
+        type: entity-filter
+        entities:
+          - media_player.living_room_plex
+        state_filter:
+          - playing
+          - paused
+        show_empty: false
+        card:
+          type: media-control
+          entity: media_player.living_room_plex
+      - id: 5f03d979eac4482ba248f36bc3d65be8  # Automatically created id
+        type: entity-filter
         entities:
           - media_player.bed_room
         state_filter:
-          - 'playing'
-          - 'paused'
+          - playing
+          - paused
         show_empty: false
         card:
           type: media-control
           entity: media_player.bed_room
-      - type: entity-filter
+      - id: d4bf201a3b6046f785208b765e3f183c  # Automatically created id
+        type: entity-filter
         entities:
           - media_player.bedroom_speaker
         state_filter:
-          - 'playing'
-          - 'paused'
+          - playing
+          - paused
         show_empty: false
         card:
           type: media-control
           entity: media_player.bedroom_speaker
-      - type: entity-filter
+      - id: 0a994d93480e49189aba1f6cfb0e4645  # Automatically created id
+        type: entity-filter
         entities:
           - media_player.outside
         state_filter:
-          - 'playing'
-          - 'paused'
+          - playing
+          - paused
         show_empty: false
         card:
           type: media-control
           entity: media_player.outside
-      - type: entities
+      - id: 66707fa07c974a42a215da5e200a727f  # Automatically created id
+        type: entities
         title: Radio
         entities:
           - input_select.radio_player
           - input_select.radio_station
           - input_number.google_volume
-      - type: entities
+      - id: 02ec26bdcc9448faab30c5feac5d9b02  # Automatically created id
+        type: entities
         title: Family
         entities:
           - device_tracker.google_maps_109209758211303121867
           - device_tracker.rachels_iphone
-  - name: House
+  - id: 1  # Automatically created id
+    name: House
     icon: mdi:security-home
     cards:
-      - type: entities
+      - id: b117512a9d8e4f2988e616895962e0ed  # Automatically created id
+        type: entities
         title: AC Split System
         entities:
           - input_select.ac_operation_mode
@@ -213,7 +235,8 @@ views:
           - input_number.ac_target_temp
           - sensor.ac_target
           - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
-      - type: entities
+      - id: c57a7a0a9b334518ac3c502bf3b32585  # Automatically created id
+        type: entities
         title: AC Scheduler
         show_header_toggle: false
         entities:
@@ -221,19 +244,22 @@ views:
           - input_text.ac_on_schedule
           - input_boolean.ac_off_schedule_active
           - input_text.ac_off_schedule
-      - type: entities
+      - id: 8bcbdccbc86549aaacf4c86d45dc3cd2  # Automatically created id
+        type: entities
         title: Bedroom Fan
         entities:
           - input_select.fan_operation_mode
           - input_number.fan_speed
-      - type: entities
+      - id: 0d4ec5e34d87468bb16e67927b4df75f  # Automatically created id
+        type: entities
         title: Robot Vacuum
         show_header_toggle: false
         entities:
           - vacuum.xiaomi_vacuum_cleaner
           - input_boolean.disable_daily_vacuum
-      - type: custom:vertical-stack-in-card
-        cards: 
+      - id: be1644a3af314a6c8944bf4b613dc593  # Automatically created id
+        type: custom:vertical-stack-in-card
+        cards:
           - type: entities
             title: Vacuum a Room
             entities:
@@ -241,150 +267,154 @@ views:
           - type: picture-elements
             image: /local/projects/floorplan_vacuum/floorplan_vacuum.png
             elements:
-            - type: image
-              entity: vacuum.xiaomi_vacuum_cleaner
-              service: vacuum.start
-              tap_action: call-service
-              image: /local/projects/floorplan_vacuum/robot-vacuum.png
-              filter: saturate(.8)
-              state_filter:
-                "on": brightness(120%) saturate(1.2)
-              style:
-                top: 75%
-                left: 20%
-                width: 20%
-            - type: service-button
-              title: Meals
-              service: script.vacuum_dining_room
-              style:
-                left: 38%
-                top: 46%
-                font-color: rgb(1, 1, 1)
-                font-family: sans-serif
-                font-size: 110%
-                text-align: center
-                font-weight: bold
-            - type: service-button
-              title: Kitchen
-              service: script.vacuum_kitchen
-              style:
-                left: 61%
-                top: 56%
-                font-color: rgb(1, 1, 1)
-                font-family: sans-serif
-                font-size: 110%
-                text-align: center
-                font-weight: bold
-            - type: service-button
-              title: Living Room
-              service: script.vacuum_living_room
-              style:
-                left: 60%
-                top: 68%
-                font-color: rgb(1, 1, 1)
-                font-family: sans-serif
-                font-size: 110%
-                text-align: center
-                font-weight: bold
-            - type: service-button
-              title: Entry
-              service: script.vacuum_entryway
-              style:
-                left: 83%
-                top: 67%
-                font-color: rgb(1, 1, 1)
-                font-family: sans-serif
-                font-size: 110%
-                text-align: center
-                font-weight: bold
-            - type: service-button
-              title: Study
-              service: script.vacuum_study
-              style:
-                left: 87%
-                top: 48%
-                font-color: rgb(1, 1, 1)
-                font-family: sans-serif
-                font-size: 110%
-                text-align: center
-                font-weight: bold
-            - type: service-button
-              title: Projector
-              service: script.vacuum_projector_room
-              style:
-                left: 85%
-                top: 16%
-                font-color: rgb(1, 1, 1)
-                font-family: sans-serif
-                font-size: 110%
-                text-align: center
-                font-weight: bold
-            - type: service-button
-              title: Bath
-              service: script.vacuum_main_bathroom
-              style:
-                left: 61%
-                top: 17%
-                font-color: rgb(1, 1, 1)
-                font-family: sans-serif
-                font-size: 110%
-                text-align: center
-                font-weight: bold
-            - type: service-button
-              title: Ensuite
-              service: script.vacuum_ensuite_bathroom
-              style:
-                left: 42%
-                top: 6%
-                font-color: rgb(1, 1, 1)
-                font-family: sans-serif
-                font-size: 110%
-                text-align: center
-                font-weight: bold
-            - type: service-button
-              title: Master
-              service: script.vacuum_bedroom
-              style:
-                left: 15%
-                top: 14%
-                font-color: rgb(1, 1, 1)
-                font-family: sans-serif
-                font-size: 110%
-                text-align: center
-                font-weight: bold
-            - type: state-label
-              entity: vacuum.xiaomi_vacuum_cleaner
-              style:
-                top: 94%
-                left: 20%
-                color: rgb(255, 255, 255)
-                pointer-events: none
-                font-family: sans-serif
-                font-size: 125%
-                text-align: center
-                font-weight: bold
-                border-left-style: solid
-                border-right-style: solid
-                border-color: rgb(34, 154, 210)
-                background-color: rgb(77, 77, 77)
-                opacity: 0.8
-  - name: Security
+              - type: image
+                entity: vacuum.xiaomi_vacuum_cleaner
+                service: vacuum.start
+                tap_action: call-service
+                image: /local/projects/floorplan_vacuum/robot-vacuum.png
+                filter: saturate(.8)
+                state_filter:
+                  on: brightness(120%) saturate(1.2)
+                style:
+                  top: 75%
+                  left: 20%
+                  width: 20%
+              - type: service-button
+                title: Meals
+                service: script.vacuum_dining_room
+                style:
+                  left: 38%
+                  top: 46%
+                  font-color: rgb(1, 1, 1)
+                  font-family: sans-serif
+                  font-size: 110%
+                  text-align: center
+                  font-weight: bold
+              - type: service-button
+                title: Kitchen
+                service: script.vacuum_kitchen
+                style:
+                  left: 61%
+                  top: 56%
+                  font-color: rgb(1, 1, 1)
+                  font-family: sans-serif
+                  font-size: 110%
+                  text-align: center
+                  font-weight: bold
+              - type: service-button
+                title: Living Room
+                service: script.vacuum_living_room
+                style:
+                  left: 60%
+                  top: 68%
+                  font-color: rgb(1, 1, 1)
+                  font-family: sans-serif
+                  font-size: 110%
+                  text-align: center
+                  font-weight: bold
+              - type: service-button
+                title: Entry
+                service: script.vacuum_entryway
+                style:
+                  left: 83%
+                  top: 67%
+                  font-color: rgb(1, 1, 1)
+                  font-family: sans-serif
+                  font-size: 110%
+                  text-align: center
+                  font-weight: bold
+              - type: service-button
+                title: Study
+                service: script.vacuum_study
+                style:
+                  left: 87%
+                  top: 48%
+                  font-color: rgb(1, 1, 1)
+                  font-family: sans-serif
+                  font-size: 110%
+                  text-align: center
+                  font-weight: bold
+              - type: service-button
+                title: Projector
+                service: script.vacuum_projector_room
+                style:
+                  left: 85%
+                  top: 16%
+                  font-color: rgb(1, 1, 1)
+                  font-family: sans-serif
+                  font-size: 110%
+                  text-align: center
+                  font-weight: bold
+              - type: service-button
+                title: Bath
+                service: script.vacuum_main_bathroom
+                style:
+                  left: 61%
+                  top: 17%
+                  font-color: rgb(1, 1, 1)
+                  font-family: sans-serif
+                  font-size: 110%
+                  text-align: center
+                  font-weight: bold
+              - type: service-button
+                title: Ensuite
+                service: script.vacuum_ensuite_bathroom
+                style:
+                  left: 42%
+                  top: 6%
+                  font-color: rgb(1, 1, 1)
+                  font-family: sans-serif
+                  font-size: 110%
+                  text-align: center
+                  font-weight: bold
+              - type: service-button
+                title: Master
+                service: script.vacuum_bedroom
+                style:
+                  left: 15%
+                  top: 14%
+                  font-color: rgb(1, 1, 1)
+                  font-family: sans-serif
+                  font-size: 110%
+                  text-align: center
+                  font-weight: bold
+              - type: state-label
+                entity: vacuum.xiaomi_vacuum_cleaner
+                style:
+                  top: 94%
+                  left: 20%
+                  color: rgb(255, 255, 255)
+                  pointer-events: none
+                  font-family: sans-serif
+                  font-size: 125%
+                  text-align: center
+                  font-weight: bold
+                  border-left-style: solid
+                  border-right-style: solid
+                  border-color: rgb(34, 154, 210)
+                  background-color: rgb(77, 77, 77)
+                  opacity: 0.8
+  - id: 2  # Automatically created id
+    name: Security
     icon: mdi:cctv
     cards:
-      - type: picture-glance
+      - id: d9de743890ba4b2aa4a1b396d608d1f0  # Automatically created id
+        type: picture-glance
         title: Front Door
         entities:
           - lock.front_door
           - binary_sensor.door_frontdoor
           - light.entry
         camera_image: camera.front_door
-      - type: picture-glance
+      - id: 57737aea3c7946499de006ff2fa8a303  # Automatically created id
+        type: picture-glance
         title: Back Door
         entities:
           - binary_sensor.door_backdoor
           - switch.outside_heater
         camera_image: camera.back_door
-      - type: entities
+      - id: bf8fa6e3fd754e028473cc23b1e0e90c  # Automatically created id
+        type: entities
         title: Security
         entities:
           - lock.front_door
@@ -392,7 +422,8 @@ views:
           - binary_sensor.motion
           - binary_sensor.motion_hallway
           - binary_sensor.motion_bedroom
-      - type: entities
+      - id: e7db0ac4e95840828fc52a229ee1b434  # Automatically created id
+        type: entities
         title: Door and Window Sensors
         entities:
           - sensor.door_count
@@ -406,10 +437,12 @@ views:
           - binary_sensor.window_livingroom3
           - binary_sensor.window_diningroom1
           - binary_sensor.window_diningroom2
-  - name: Lights
+  - id: 3  # Automatically created id
+    name: Lights
     icon: mdi:lightbulb
     cards:
-      - type: entities
+      - id: c66be4a840b1445cac10470506cd82ff  # Automatically created id
+        type: entities
         title: Lights
         entities:
           - light.entry
@@ -420,12 +453,14 @@ views:
           - light.rachel_bedside
           - light.study_desk_lamp
           - light.yeelink_light_strip
-      - type: entities
+      - id: b0b614fd619e4bd680b0e8063f9ae2d1  # Automatically created id
+        type: entities
         title: Switches
         entities:
           - switch.living_room_lamp
           - switch.outside_heater
-  - name: Info
+  - id: 4  # Automatically created id
+    name: Info
     icon: mdi:settings
     cards:
 # Plan Coordinates Usage (Example)
@@ -434,7 +469,8 @@ views:
 #          - type: custom:plan-coordinates
 #          - type: picture-elements
 #            image: /local/projects/example.png
-      - type: entities
+      - id: aacf602c89fb430ab77631a88483677f  # Automatically created id
+        type: entities
         title: Links
         entities:
           - weblink.router
@@ -444,7 +480,8 @@ views:
           - weblink.nzb_get
           - weblink.sonarr
           - weblink.radarr
-      - type: entities
+      - id: 8e7ffde210e14840a0cc969d2f8b69a1  # Automatically created id
+        type: entities
         title: Network
         show_header_toggle: false
         entities:
@@ -464,7 +501,8 @@ views:
           - sensor.xboxonex
           - sensor.xboxones
           - sensor.ps4
-      - type: entities
+      - id: ee8216a041854af685a3e22e27f02755  # Automatically created id
+        type: entities
         title: Synology
         entities:
           - sensor.cpu_load_total
@@ -475,21 +513,24 @@ views:
           - sensor.volume_used_volume_2
           - sensor.maximum_disk_temp_volume_2
           - sensor.status_volume_3
-      - type: entities
+      - id: fecdbfa9d5db4047a388a200cac073a2  # Automatically created id
+        type: entities
         title: Washing Machine
         show_header_toggle: false
         entities:
           - sensor.washing_machine_status
           - switch.plug_washingmachine
           - sensor.power_washingmachine
-      - type: entities
+      - id: 8a6a8f38692c419d93aff826cef694fb  # Automatically created id
+        type: entities
         title: UPS
         entities:
           - sensor.ups_status
           - sensor.ups_load
           - sensor.ups_battery_runtime_mins
           - sensor.ups_battery_charge
-      - type: entities
+      - id: 9527d46fce1a49f88eb96e343553a703  # Automatically created id
+        type: entities
         title: Automation Override
         entities:
           - input_boolean.guest_mode
@@ -508,21 +549,24 @@ views:
           - input_boolean.disable_entryway_light_frontdoor
           - input_boolean.disable_livingroom_light_frontdoor
           - input_boolean.disable_auto_off_outside_heater
-      - type: entities
+      - id: a759dfc439a4419a97b773c24a5cb8b1  # Automatically created id
+        type: entities
         title: Zigbee Pairing
         show_header_toggle: false
         entities:
           - input_boolean.zigbee_permit_join
           - timer.zigbee_permit_join
           - sensor.bridge_state
-      - type: entities
+      - id: 8a58c49c628e4f69b64578fed58433fc  # Automatically created id
+        type: entities
         title: Fully Kiosk
         show_header_toggle: false
         entities:
           - switch.fkiosk_screen
           - sensor.fkiosk
           - input_boolean.disable_fully_kiosk_screen_front_door
-      - type: entities
+      - id: b15aab4f4a974b89ac7d37fe1a987758  # Automatically created id
+        type: entities
         title: Multisensors
         entities:
           - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
@@ -533,7 +577,8 @@ views:
           - binary_sensor.motion_hallway
           - sensor.temperature_bedroom
           - sensor.humidity_bedroom
-      - type: entities
+      - id: f4cacf669da94364b67fdab88d851d09  # Automatically created id
+        type: entities
         title: Battery Levels
         entities:
           - sensor.back_door_sensor_battery
@@ -554,13 +599,15 @@ views:
           - sensor.battery_bedroomtemp_sensor
           - sensor.battery_livingroommulti_sensor
           - sensor.battery_smartlock
-      - type: entities
+      - id: 2bdc2bf9c37b41a98f796b99a1c0216c  # Automatically created id
+        type: entities
         title: Trash Schedule
         entities:
           - sensor.trash_day
           - sensor.trash_pickup_day
           - input_select.trash_pickup_day
-      - type: entities
+      - id: 3fcdaf61a33a417fb56439ec638a1e25  # Automatically created id
+        type: entities
         title: Recycle Schedule
         entities:
           - sensor.recycle_day
@@ -569,7 +616,8 @@ views:
           - input_select.recycle_pickup_day
           - sensor.current_week
           - input_select.recycle_pickup_week
-      - type: entities
+      - id: 2451e233e8384a75859f2e587ee5b1da  # Automatically created id
+        type: entities
         title: Projector Room Remote
         show_header_toggle: false
         entities:
@@ -581,7 +629,8 @@ views:
           - switch.reciever_hdmi2
           - switch.reciever_hdmi3
           - switch.reciever_hdmi4
-      - type: entities
+      - id: cb28f565b1314e61aef636f373cac58e  # Automatically created id
+        type: entities
         title: Scripts
         entities:
           - script.good_night
@@ -589,14 +638,16 @@ views:
           - script.stop_air_conditioner
           - script.start_fan
           - script.stop_fan
-      - type: entities
+      - id: e949b7a57cbb490498924000cea58fb1  # Automatically created id
+        type: entities
         title: Speech Functions
         show_header_toggle: false
         entities:
           - input_boolean.lastmsg
           - switch.air_conditioner
           - switch.fan
-      - type: custom:tracker-card
+      - id: e8dd3ca8b6954741b27cd787a445767d  # Automatically created id
+        type: custom:tracker-card
         title: Custom Updates
         trackers:
           - sensor.custom_card_tracker

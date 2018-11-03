@@ -77,7 +77,7 @@ group:
 ###############################################################################
 input_select:
   trash_pickup_day:
-    name: Current Trash Pickup Day (Evey Week)
+    name: Current Trash Pickup Day (Every Week)
     options:
      - Monday
      - Tuesday

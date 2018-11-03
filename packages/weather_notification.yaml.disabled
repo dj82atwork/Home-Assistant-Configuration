@@ -1,7 +1,7 @@
 ###############################################################################
 #   @author         :   Trent Stanton
 #   @date           :   25/02/2018
-#   @package        :   BOM Weather Notification
+#   @package        :   BOM Weather Notification - No longer working 4/11/18
 #   @description    :   Morning and Evening weather notification utilising BOM.
 #   @url            :   https://community.home-assistant.io/t/weather-forecast-for-australia-using-bom-website/14794
 ###############################################################################

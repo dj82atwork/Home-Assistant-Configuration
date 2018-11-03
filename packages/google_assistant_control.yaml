@@ -8,17 +8,42 @@
 
 google_assistant:
   project_id: !secret gh_project_id
-  client_id: !secret gh_client_id
-  access_token: !secret gh_access_token
   expose_by_default: true
   exposed_domains:
-    - Switch
-    - Light
-    - script
+    - light
     - scene
   entity_config:
+    script.good_night:
+      expose: true
+    script.turn_on_plex:
+      expose: true
+      aliases:
+        - Plex
+        - Plex player
+    script.turn_on_ps4:
+      expose: true
+      aliases:
+        - PS4
+        - Playstation
+        - Playstation 4
+    script.turn_on_xboxone:
+      expose: true
+      aliases:
+        - Xbox One
+        - Xbox
+    switch.air_conditioner:
+      expose: true
+      aliases:
+        - AC
+        - Air Con
+    switch.fan:
+      expose: true
+      aliases:
+        - Bedroom Fan
+        - Ceiling Fan
     light.entry:
       name: Entry
+      expose: true
       aliases:
         - Entry Light
         - Entry Lights
@@ -26,12 +51,14 @@ google_assistant:
       room: Entry
     light.entryway:
       name: Entryway
+      expose: true
       aliases:
         - Entryway Light
         - Entryway Lights
       room: Entryway
     switch.livingroom_light:
       name: Living Room
+      expose: true
       aliases:
         - Living Room Light
         - Living Room Lights
@@ -39,15 +66,24 @@ google_assistant:
         - Family Room Light
         - Family Room Switch
       room: Living Room
+    switch.living_room_lamp:
+      name: Living Room
+      expose: true
+      aliases:
+        - Living Room Lamp
+        - Family Room Lamp
+      room: Living Room
     switch.kitchen_light:
       name: Kitchen
+      expose: true
       aliases:
-        - kitchen Light
-        - kitchen Lights
-        - kitchen Switch
+        - Kitchen Light
+        - Kitchen Lights
+        - Kitchen Switch
       room: Kitchen
     light.trent_bedside:
       name: Trent Bedside
+      expose: true
       aliases:
         - Trent Bedside Light
         - Trents Bedside Light
@@ -60,6 +96,7 @@ google_assistant:
       room: Bedroom
     light.rachel_bedside:
       name: Rachel Bedside
+      expose: true
       aliases:
         - Rachel Bedside Light
         - Rachels Bedside Light
@@ -72,6 +109,7 @@ google_assistant:
       room: Bedroom
     light.study_desk_lamp:
       name: Study Desk Lamp
+      expose: true
       aliases:
         - Study Desk Light
         - Office Desk Light
@@ -82,13 +120,9 @@ google_assistant:
         - Study Light
         - Office Light
       room: Study
-    switch.living_room_lamp:
-      name: Living Room Lamp
-      aliases:
-        - family room Lamp
-      room: Living Room
     switch.outside_heater:
       name: Outside Heater
+      expose: true
       aliases:
         - Outside Heating
         - Outdoor Heater
@@ -98,3 +132,9 @@ google_assistant:
         - Decking Heater
         - Decking Heating
       room: Outside
+    switch.plug_washingmachine:
+      expose: true
+    switch.projector_power:
+      expose: true
+    switch.reciever_power:
+      expose: true

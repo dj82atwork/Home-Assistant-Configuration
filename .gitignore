@@ -25,6 +25,7 @@ home-assistant_v2.db-shm
 home-assistant_v2.db-wal
 .spotify-token-cache
 .uuid
+.stignore
 gitupdate.sh
 *.db-journal
 config

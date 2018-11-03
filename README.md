@@ -16,7 +16,7 @@
 * [Xiaomi Roborock Robot Vacuum Cleaner 2](https://xiaomi-mi.com/appliances/xiaomi-mijia-roborock-robot-vacuum-cleaner-2-white) - Robot Vacuum Cleaner
 * [Fibaro Multisensor](https://www.fibaro.com/en/products/motion-sensor)
 * [Fibaro Relay Switch](https://www.fibaro.com/en/products/switches-2) - Light Switch Control
-* [Xiaomi Multifunctional Gateway](https://www.gearbest.com/living-appliances/pp_344667.html) - Gateway used for Xiaomi home automation devices.
+* [Xiaomi Multifunctional Gateway](https://www.gearbest.com/living-appliances/pp_344667.html) - Gateway was being used for Xiaomi home automation devices. - Now [Zigbee2MQTT](https://github.com/Koenkk/zigbee2mqtt).
 * [Xiaomi Window Door Sensors](https://www.gearbest.com/smart-light-bulb/pp_257677.html)
 * [Xiaomi Motion Sensors](https://www.gearbest.com/smart-light-bulb/pp_257678.html)
 * [Xiaomi Wall Plug](https://www.gearbest.com/living-appliances/pp_344666.html)
@@ -50,7 +50,7 @@
 * Ceiling Fan control via [Broadlink RM Pro](https://amzn.to/2uOoBR0).
 * Living Room TV Activity control via [Harmony Hub](http://amzn.to/2n0jhG3).
 * Daily Automatic Cleaning when nobody is home via [Xiaomi Roborock Robot Vacuum Cleaner 2](https://xiaomi-mi.com/appliances/xiaomi-mijia-roborock-robot-vacuum-cleaner-2-white)
-* [Selective room cleaning](https://community.home-assistant.io/t/howto-xiaomi-vacuum-zoned-cleaning) via [Xiaomi Roborock Robot Vacuum Cleaner 2](https://xiaomi-mi.com/appliances/xiaomi-mijia-roborock-robot-vacuum-cleaner-2-white) including custom Floor Plan state card to allow me to click / touch a room to begin a cleaning cycle.
+* [Selective room cleaning](https://community.home-assistant.io/t/howto-xiaomi-vacuum-zoned-cleaning) via [Xiaomi Roborock Robot Vacuum Cleaner 2](https://xiaomi-mi.com/appliances/xiaomi-mijia-roborock-robot-vacuum-cleaner-2-white) including Picture Elements Card card to allow me to click / touch a room to begin a cleaning cycle.
 * Automatically lock front door after specific time period.
 * Automatically turn on Entryway light when front door opens and turn off after time period.
 * Automatically turn on Living room light when front door opens and no motion detected inside for 10 minutes.
@@ -62,9 +62,10 @@
 * Turn on Entryway light for 10 minutes once I get home.
 * Weather notification at sunrise and sunset.
 * Goodnight script / Voice activation which will turn off all devices, lock the front door and advise via a voice notification if and how many windows or doors are open.
+* UPS status notification (On Battery / Low Battery / On Line)
 * Trash and Recycle Bin night reminders - Thanks [CCOSTAN](https://github.com/CCOSTAN/Home-AssistantConfig)!
 * Washing Machine monitoring and reminders - Thanks [philhawthorne](https://philhawthorne.com/making-dumb-dishwashers-and-washing-machines-smart-alerts-when-the-dishes-and-clothes-are-cleaned/)!
-* UPS status notification (On Battery / Low Battery / On Line)
+* TV Media Player Control with Picture Elements Card - Thanks [mattclair](https://github.com/mattclair/Home-AssistantConfig)
 
 # Screenshots
 #### Day Theme
