@@ -124,7 +124,8 @@ device_tracker:
   - platform: nmap_tracker
     hosts: !secret nmap_hosts
     exclude:
-     - !secret hassbian_ip
+     - !secret router_ip
+     - !secret hass_ip
      - !secret sensor_synology_host
 
 #ZWave Devices

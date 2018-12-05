@@ -55,6 +55,8 @@ sensor:
   - platform: template
     sensors:
       foo_battery_level:
+        entity_id:
+          - sensor.fkiosk
         friendly_name: "fkiosk_battery_level"
         unit_of_measurement: '%'
         value_template: "{{ states.sensor.fkiosk.attributes.batteryLevel }}"

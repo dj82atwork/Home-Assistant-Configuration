@@ -163,6 +163,8 @@ sensor:
   - platform: template
     sensors:
       xiaomi_vacuum_cleaner_status:
+        entity_id:
+          - vacuum.xiaomi_vacuum_cleaner
         friendly_name: "Xiaomi Vacuum Cleaner Status"
         value_template: "{{ states.vacuum.xiaomi_vacuum_cleaner }}"
 

@@ -539,8 +539,8 @@ views:
           - input_boolean.trash_reminders
           - input_boolean.disable_autolock_front_door
           - input_boolean.disable_current_temperature_notification
-          - input_boolean.disable_morning_notification
-          - input_boolean.disable_afternoon_notification
+#          - input_boolean.disable_morning_notification
+#          - input_boolean.disable_afternoon_notification
           - input_boolean.disable_unexpected_motion_notification
           - input_boolean.disable_device_tampering_notification
           - input_boolean.disable_washing_machine_notification

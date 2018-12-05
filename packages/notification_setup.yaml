@@ -29,3 +29,7 @@ notify:
   - name: google_assistant_command
     platform: rest
     resource: !secret ga_api_command
+  - platform: webostv
+    host: !secret webostv_host
+    name: living_room_tv
+#    icon: "haicon.png"

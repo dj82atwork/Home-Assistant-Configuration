@@ -97,6 +97,10 @@ sensor:
   - platform: template
     sensors:
       fan_operation_mode_temp:
+        entity_id:
+          - input_select.fan_operation_mode
+          - sensor.fan_operation_mode_temp
+          - input_number.fan_speed
         friendly_name: "Fan Operation Mode Template"
         value_template: >-
           {% if is_state('input_select.fan_operation_mode', 'Forward') %}

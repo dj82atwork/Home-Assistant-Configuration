@@ -85,12 +85,21 @@ sensor:
   - platform: template
     sensors:
       ac_setting_cool:
+        entity_id:
+          - input_number.ac_target_temp
+          - input_select.ac_fan_mode
+          - input_select.ac_swing_mode
         friendly_name: 'Current AC Cool Setting'
         value_template: '{{ states.input_number.ac_target_temp.state | int }}-{{ states.input_select.ac_fan_mode.state }}-{{ states.input_select.ac_swing_mode.state }}'
       ac_setting_fan:
+        entity_id:
+          - input_select.ac_fan_mode
+          - input_select.ac_swing_mode
         friendly_name: 'Current AC Fan Setting'
         value_template: 'FAN-{{ states.input_select.ac_fan_mode.state }}-{{ states.input_select.ac_swing_mode.state }}'
       ac_target:
+        entity_id:
+          - input_number.ac_target_temp
         friendly_name: 'Target Temperature'
         value_template: '{{ states.input_number.ac_target_temp.state | int }}'
         unit_of_measurement: '°C'

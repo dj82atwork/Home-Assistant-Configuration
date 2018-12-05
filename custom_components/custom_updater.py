@@ -10,11 +10,11 @@ import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.event import track_time_interval
 
-__version__ = '3.1.0'
+VERSION = '3.1.8'
 
 _LOGGER = logging.getLogger(__name__)
 
-REQUIREMENTS = ['pyupdate==0.1.2']
+REQUIREMENTS = ['pyupdate==0.2.16']
 
 CONF_TRACK = 'track'
 CONF_HIDE_SENSOR = 'hide_sensor'
@@ -81,29 +81,32 @@ def setup(hass, config):
 
     def check_all_service(call):
         """Set up service for manual trigger."""
-        if not conf_track or 'cards' in conf_track:
+        if 'cards' in conf_track:
             card_controller.cache_versions()
-        if not conf_track or 'components' in conf_track:
+        if 'components' in conf_track:
             components_controller.cache_versions()
-        if not conf_track or 'python_scripts' in conf_track:
+        if 'python_scripts' in conf_track:
             python_scripts_controller.cache_versions()
 
     def update_all_service(call):
         """Set up service for manual trigger."""
-        if not conf_track or 'cards' in conf_track:
+        if 'cards' in conf_track:
             card_controller.update_all()
-        if not conf_track or 'components' in conf_track:
+        if 'components' in conf_track:
             components_controller.update_all()
-        if not conf_track or 'python_scripts' in conf_track:
+        if 'python_scripts' in conf_track:
             python_scripts_controller.update_all()
 
     def install_service(call):
         """Install single component/card."""
         element = call.data.get(ATTR_ELEMENT)
         _LOGGER.debug('Installing %s', element)
-        card_controller.install(element)
-        components_controller.install(element)
-        python_scripts_controller.install(element)
+        if 'cards' in conf_track:
+            card_controller.install(element)
+        if 'components' in conf_track:
+            components_controller.install(element)
+        if 'python_scripts' in conf_track:
+            python_scripts_controller.install(element)
 
     hass.services.register(DOMAIN, 'check_all', check_all_service)
     hass.services.register(DOMAIN, 'update_all', update_all_service)
@@ -130,22 +133,27 @@ class CustomCards():
         self.show_installable = config_show_installable
         self.cache_versions()
 
-    def cache_versions(self):
+    def cache_versions(self, now=None):
         """Cache."""
         information = self.pyupdate.get_sensor_data(self.ha_conf_dir,
                                                     self.show_installable,
                                                     self.custom_url)
-        self.hass.states.set('sensor.custom_card_tracker', information[1],
-                             information[0])
+        state = int(information[1])
+        attributes = information[0]
+        attributes['hidden'] = self.hidden
+        self.hass.states.set('sensor.custom_card_tracker', state, attributes)
 
     def update_all(self):
         """Update all cards."""
-        self.pyupdate.update_all(self.ha_conf_dir, self.custom_url)
+        self.pyupdate.update_all(self.ha_conf_dir, self.show_installable,
+                                 self.custom_url)
         information = self.pyupdate.get_sensor_data(self.ha_conf_dir,
                                                     self.show_installable,
                                                     self.custom_url)
-        self.hass.states.set('sensor.custom_card_tracker', information[1],
-                             information[0])
+        state = int(information[1])
+        attributes = information[0]
+        attributes['hidden'] = self.hidden
+        self.hass.states.set('sensor.custom_card_tracker', state, attributes)
 
     def install(self, element):
         """Install single card."""
@@ -171,20 +179,29 @@ class CustomComponents():
         self.show_installable = config_show_installable
         self.cache_versions()
 
-    def cache_versions(self):
+    def cache_versions(self, now=None):
         """Cache."""
-        information = self.pyupdate.get_sensor_data(self.show_installable,
+        information = self.pyupdate.get_sensor_data(self.ha_conf_dir,
+                                                    self.show_installable,
                                                     self.custom_url)
-        self.hass.states.set('sensor.custom_component_tracker', information[1],
-                             information[0])
+        state = int(information[1])
+        attributes = information[0]
+        attributes['hidden'] = self.hidden
+        self.hass.states.set('sensor.custom_component_tracker', state,
+                             attributes)
 
     def update_all(self):
         """Update all components."""
-        self.pyupdate.update_all(self.ha_conf_dir, self.custom_url)
-        information = self.pyupdate.get_sensor_data(self.show_installable,
+        self.pyupdate.update_all(self.ha_conf_dir, self.show_installable,
+                                 self.custom_url)
+        information = self.pyupdate.get_sensor_data(self.ha_conf_dir,
+                                                    self.show_installable,
                                                     self.custom_url)
-        self.hass.states.set('sensor.custom_component_tracker', information[1],
-                             information[0])
+        state = int(information[1])
+        attributes = information[0]
+        attributes['hidden'] = self.hidden
+        self.hass.states.set('sensor.custom_component_tracker', state,
+                             attributes)
 
     def install(self, element):
         """Install single component."""
@@ -210,22 +227,31 @@ class CustomPythonScripts():
         self.show_installable = config_show_installable
         self.cache_versions()
 
-    def cache_versions(self):
+    def cache_versions(self, now=None):
         """Cache."""
-        information = self.pyupdate.get_sensor_data(self.show_installable,
+        information = self.pyupdate.get_sensor_data(self.ha_conf_dir,
+                                                    self.show_installable,
                                                     self.custom_url)
+        state = int(information[1])
+        attributes = information[0]
+        attributes['hidden'] = self.hidden
         self.hass.states.set('sensor.custom_python_script_tracker',
-                             information[1],
-                             information[0])
+                             state,
+                             attributes)
 
     def update_all(self):
         """Update all python_scripts."""
-        self.pyupdate.update_all(self.ha_conf_dir, self.custom_url)
-        information = self.pyupdate.get_sensor_data(self.show_installable,
+        self.pyupdate.update_all(self.ha_conf_dir, self.show_installable,
+                                 self.custom_url)
+        information = self.pyupdate.get_sensor_data(self.ha_conf_dir,
+                                                    self.show_installable,
                                                     self.custom_url)
+        state = int(information[1])
+        attributes = information[0]
+        attributes['hidden'] = self.hidden
         self.hass.states.set('sensor.custom_python_script_tracker',
-                             information[1],
-                             information[0])
+                             state,
+                             attributes)
 
     def install(self, element):
         """Install single python_script."""
