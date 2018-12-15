@@ -23,7 +23,8 @@ light:
 # MILIGHT LED MQTT
 # Commands:  milight/commands/:device_id/:device_type/:group_id
 # Updates: milight/commands/:device_id/:device_type/:group_id
-  - platform: mqtt_json
+  - platform: mqtt
+    schema: json
     name: "Entryway"
     command_topic: milight/commands/0x11/rgb_cct/1
     state_topic: milight/states/0x11/rgb_cct/1
@@ -32,7 +33,8 @@ light:
     brightness: true
     effect: true
   
-  - platform: mqtt_json
+  - platform: mqtt
+    schema: json
     name: "Entry"
     command_topic: milight/commands/0x11/rgb_cct/2
     state_topic: milight/states/0x11/rgb_cct/2

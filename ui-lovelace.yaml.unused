@@ -7,7 +7,7 @@ resources:
     type: js
   - url: /local/custom-lovelace/cartoon-weather-card/cartoon-weather-card.js?v=0.0.1
     type: js
-  - url: /local/vertical-stack-in-card.js?v=0.0.6
+  - url: /local/vertical-stack-in-card.js?v=0.0.8
     type: js
   - url: /local/custom-lovelace/plan-coordinates/plan-coordinates.js?v=0.1.0
     type: js
@@ -19,11 +19,9 @@ views:
     name: Home
     icon: mdi:home
     cards:
-      - id: 9683cf167ce742549806e2f95a41e34d  # Automatically created id
-        type: weather-forecast
+      - type: weather-forecast
         entity: weather.melbourne_forecast
-      - id: e46668a39f8f462faa417ba41d4c4485  # Automatically created id
-        type: entity-filter
+      - type: entity-filter
         entities:
           - media_player.living_room_home
         state_filter:
@@ -33,8 +31,7 @@ views:
         card:
           type: media-control
           entity: media_player.living_room_home
-      - id: 4b371978480f421eb77720a1a80dc093  # Automatically created id
-        type: vertical-stack
+      - type: vertical-stack
         cards:
           - type: picture-elements
             title: Living Room TV
@@ -164,8 +161,7 @@ views:
             power_color: true
             show_source: true
             volume_stateless: true
-      - id: 6f13061bfa214a938f72ff619bf19240  # Automatically created id
-        type: entity-filter
+      - type: entity-filter
         entities:
           - media_player.living_room_plex
         state_filter:
@@ -175,8 +171,7 @@ views:
         card:
           type: media-control
           entity: media_player.living_room_plex
-      - id: 5f03d979eac4482ba248f36bc3d65be8  # Automatically created id
-        type: entity-filter
+      - type: entity-filter
         entities:
           - media_player.bed_room
         state_filter:
@@ -186,8 +181,7 @@ views:
         card:
           type: media-control
           entity: media_player.bed_room
-      - id: d4bf201a3b6046f785208b765e3f183c  # Automatically created id
-        type: entity-filter
+      - type: entity-filter
         entities:
           - media_player.bedroom_speaker
         state_filter:
@@ -197,8 +191,7 @@ views:
         card:
           type: media-control
           entity: media_player.bedroom_speaker
-      - id: 0a994d93480e49189aba1f6cfb0e4645  # Automatically created id
-        type: entity-filter
+      - type: entity-filter
         entities:
           - media_player.outside
         state_filter:
@@ -208,21 +201,18 @@ views:
         card:
           type: media-control
           entity: media_player.outside
-      - id: 66707fa07c974a42a215da5e200a727f  # Automatically created id
-        type: entities
+      - type: entities
         title: Radio
         entities:
           - input_select.radio_player
           - input_select.radio_station
           - input_number.google_volume
-      - id: 02ec26bdcc9448faab30c5feac5d9b02  # Automatically created id
-        type: entities
+      - type: entities
         title: Family
         entities:
           - device_tracker.google_maps_109209758211303121867
           - device_tracker.rachels_iphone
-  - id: 1  # Automatically created id
-    name: House
+  - name: House
     icon: mdi:security-home
     cards:
       - id: b117512a9d8e4f2988e616895962e0ed  # Automatically created id
@@ -235,8 +225,7 @@ views:
           - input_number.ac_target_temp
           - sensor.ac_target
           - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
-      - id: c57a7a0a9b334518ac3c502bf3b32585  # Automatically created id
-        type: entities
+      - type: entities
         title: AC Scheduler
         show_header_toggle: false
         entities:
@@ -244,21 +233,18 @@ views:
           - input_text.ac_on_schedule
           - input_boolean.ac_off_schedule_active
           - input_text.ac_off_schedule
-      - id: 8bcbdccbc86549aaacf4c86d45dc3cd2  # Automatically created id
-        type: entities
+      - type: entities
         title: Bedroom Fan
         entities:
           - input_select.fan_operation_mode
           - input_number.fan_speed
-      - id: 0d4ec5e34d87468bb16e67927b4df75f  # Automatically created id
-        type: entities
+      - type: entities
         title: Robot Vacuum
         show_header_toggle: false
         entities:
           - vacuum.xiaomi_vacuum_cleaner
           - input_boolean.disable_daily_vacuum
-      - id: be1644a3af314a6c8944bf4b613dc593  # Automatically created id
-        type: custom:vertical-stack-in-card
+      - type: custom:vertical-stack-in-card
         cards:
           - type: entities
             title: Vacuum a Room
@@ -398,23 +384,20 @@ views:
     name: Security
     icon: mdi:cctv
     cards:
-      - id: d9de743890ba4b2aa4a1b396d608d1f0  # Automatically created id
-        type: picture-glance
+      - type: picture-glance
         title: Front Door
         entities:
           - lock.front_door
           - binary_sensor.door_frontdoor
           - light.entry
         camera_image: camera.front_door
-      - id: 57737aea3c7946499de006ff2fa8a303  # Automatically created id
-        type: picture-glance
+      - type: picture-glance
         title: Back Door
         entities:
           - binary_sensor.door_backdoor
           - switch.outside_heater
         camera_image: camera.back_door
-      - id: bf8fa6e3fd754e028473cc23b1e0e90c  # Automatically created id
-        type: entities
+      - type: entities
         title: Security
         entities:
           - lock.front_door
@@ -422,8 +405,7 @@ views:
           - binary_sensor.motion
           - binary_sensor.motion_hallway
           - binary_sensor.motion_bedroom
-      - id: e7db0ac4e95840828fc52a229ee1b434  # Automatically created id
-        type: entities
+      - type: entities
         title: Door and Window Sensors
         entities:
           - sensor.door_count
@@ -437,12 +419,10 @@ views:
           - binary_sensor.window_livingroom3
           - binary_sensor.window_diningroom1
           - binary_sensor.window_diningroom2
-  - id: 3  # Automatically created id
-    name: Lights
+  - name: Lights
     icon: mdi:lightbulb
     cards:
-      - id: c66be4a840b1445cac10470506cd82ff  # Automatically created id
-        type: entities
+      - type: entities
         title: Lights
         entities:
           - light.entry
@@ -453,14 +433,12 @@ views:
           - light.rachel_bedside
           - light.study_desk_lamp
           - light.yeelink_light_strip
-      - id: b0b614fd619e4bd680b0e8063f9ae2d1  # Automatically created id
-        type: entities
+      - type: entities
         title: Switches
         entities:
           - switch.living_room_lamp
           - switch.outside_heater
-  - id: 4  # Automatically created id
-    name: Info
+  - name: Info
     icon: mdi:settings
     cards:
 # Plan Coordinates Usage (Example)
@@ -469,8 +447,7 @@ views:
 #          - type: custom:plan-coordinates
 #          - type: picture-elements
 #            image: /local/projects/example.png
-      - id: aacf602c89fb430ab77631a88483677f  # Automatically created id
-        type: entities
+      - type: entities
         title: Links
         entities:
           - weblink.router
@@ -480,8 +457,7 @@ views:
           - weblink.nzb_get
           - weblink.sonarr
           - weblink.radarr
-      - id: 8e7ffde210e14840a0cc969d2f8b69a1  # Automatically created id
-        type: entities
+      - type: entities
         title: Network
         show_header_toggle: false
         entities:
@@ -501,8 +477,7 @@ views:
           - sensor.xboxonex
           - sensor.xboxones
           - sensor.ps4
-      - id: ee8216a041854af685a3e22e27f02755  # Automatically created id
-        type: entities
+      - type: entities
         title: Synology
         entities:
           - sensor.cpu_load_total
@@ -513,24 +488,21 @@ views:
           - sensor.volume_used_volume_2
           - sensor.maximum_disk_temp_volume_2
           - sensor.status_volume_3
-      - id: fecdbfa9d5db4047a388a200cac073a2  # Automatically created id
-        type: entities
+      - type: entities
         title: Washing Machine
         show_header_toggle: false
         entities:
           - sensor.washing_machine_status
           - switch.plug_washingmachine
           - sensor.power_washingmachine
-      - id: 8a6a8f38692c419d93aff826cef694fb  # Automatically created id
-        type: entities
+      - type: entities
         title: UPS
         entities:
           - sensor.ups_status
           - sensor.ups_load
           - sensor.ups_battery_runtime_mins
           - sensor.ups_battery_charge
-      - id: 9527d46fce1a49f88eb96e343553a703  # Automatically created id
-        type: entities
+      - type: entities
         title: Automation Override
         entities:
           - input_boolean.guest_mode
@@ -549,24 +521,21 @@ views:
           - input_boolean.disable_entryway_light_frontdoor
           - input_boolean.disable_livingroom_light_frontdoor
           - input_boolean.disable_auto_off_outside_heater
-      - id: a759dfc439a4419a97b773c24a5cb8b1  # Automatically created id
-        type: entities
+      - type: entities
         title: Zigbee Pairing
         show_header_toggle: false
         entities:
           - input_boolean.zigbee_permit_join
           - timer.zigbee_permit_join
           - sensor.bridge_state
-      - id: 8a58c49c628e4f69b64578fed58433fc  # Automatically created id
-        type: entities
+      - type: entities
         title: Fully Kiosk
         show_header_toggle: false
         entities:
           - switch.fkiosk_screen
           - sensor.fkiosk
           - input_boolean.disable_fully_kiosk_screen_front_door
-      - id: b15aab4f4a974b89ac7d37fe1a987758  # Automatically created id
-        type: entities
+      - type: entities
         title: Multisensors
         entities:
           - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
@@ -577,8 +546,7 @@ views:
           - binary_sensor.motion_hallway
           - sensor.temperature_bedroom
           - sensor.humidity_bedroom
-      - id: f4cacf669da94364b67fdab88d851d09  # Automatically created id
-        type: entities
+      - type: entities
         title: Battery Levels
         entities:
           - sensor.back_door_sensor_battery
@@ -599,15 +567,13 @@ views:
           - sensor.battery_bedroomtemp_sensor
           - sensor.battery_livingroommulti_sensor
           - sensor.battery_smartlock
-      - id: 2bdc2bf9c37b41a98f796b99a1c0216c  # Automatically created id
-        type: entities
+      - type: entities
         title: Trash Schedule
         entities:
           - sensor.trash_day
           - sensor.trash_pickup_day
           - input_select.trash_pickup_day
-      - id: 3fcdaf61a33a417fb56439ec638a1e25  # Automatically created id
-        type: entities
+      - type: entities
         title: Recycle Schedule
         entities:
           - sensor.recycle_day
@@ -616,8 +582,7 @@ views:
           - input_select.recycle_pickup_day
           - sensor.current_week
           - input_select.recycle_pickup_week
-      - id: 2451e233e8384a75859f2e587ee5b1da  # Automatically created id
-        type: entities
+      - type: entities
         title: Projector Room Remote
         show_header_toggle: false
         entities:
@@ -629,8 +594,7 @@ views:
           - switch.reciever_hdmi2
           - switch.reciever_hdmi3
           - switch.reciever_hdmi4
-      - id: cb28f565b1314e61aef636f373cac58e  # Automatically created id
-        type: entities
+      - type: entities
         title: Scripts
         entities:
           - script.good_night
@@ -638,16 +602,14 @@ views:
           - script.stop_air_conditioner
           - script.start_fan
           - script.stop_fan
-      - id: e949b7a57cbb490498924000cea58fb1  # Automatically created id
-        type: entities
+      - type: entities
         title: Speech Functions
         show_header_toggle: false
         entities:
           - input_boolean.lastmsg
           - switch.air_conditioner
           - switch.fan
-      - id: e8dd3ca8b6954741b27cd787a445767d  # Automatically created id
-        type: custom:tracker-card
+      - type: custom:tracker-card
         title: Custom Updates
         trackers:
           - sensor.custom_card_tracker

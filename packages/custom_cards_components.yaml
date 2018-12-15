@@ -9,3 +9,6 @@
 # Custom Updater
 # https://github.com/custom-components/custom_updater
 custom_updater:
+  track:
+    - cards
+    - components

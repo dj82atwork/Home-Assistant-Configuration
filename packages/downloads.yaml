@@ -1,0 +1,74 @@
+###############################################################################
+#   @author         :   Trent Stanton
+#   @date           :   15/12/2018
+#   @package        :   
+#   @description    :   Controls Downloads Within Network
+#   @url            :   
+###############################################################################
+homeassistant:
+  customize:
+    switch.nzbget_pause:
+      friendly_name: NZBGet Pause Downloads
+      icon: 'mdi:pause-circle'
+
+input_boolean:
+  disable_nzbget_unpause_schedule:
+    name: Disable NZBGet Unpause Schedule
+    initial: off
+
+sensor:
+  - platform: template
+    sensors:
+      living_room_tv_source:
+        entity_id:
+          - media_player.living_room_tv
+        value_template: '{{ states.media_player.living_room_tv.attributes["source"] }}'
+        friendly_name: 'Living Room TV Source'
+
+switch:
+  - platform: command_line
+    switches:
+# Control via API & Curl Commands
+      nzbget_pause:
+        command_on: !secret nzbget_pause_switch_on
+        command_off: !secret nzbget_pause_switch_off
+        command_state: !secret nzbget_pause_switch_state
+
+###############################################################################
+#                               Automations
+###############################################################################
+automation:
+  - alias: 'Unpause Downloads in the Evening'
+    trigger:
+      - platform: time
+        at: '23:00:00'
+    condition:
+      - condition: state
+        entity_id: input_boolean.disable_nzbget_unpause_schedule
+        state: 'off'
+    action:
+    - service: switch.turn_off
+      entity_id: switch.nzbget_pause
+  - alias: 'Pause NZBGet Downloads when Streaming'
+    trigger:
+      - platform: state
+        entity_id: sensor.living_room_tv_source
+        to: '9Now'
+      - platform: state
+        entity_id: sensor.living_room_tv_source
+        to: 'ABC iview'
+      - platform: state
+        entity_id: sensor.living_room_tv_source
+        to: 'Amazon Prime Video'
+      - platform: state
+        entity_id: sensor.living_room_tv_source
+        to: 'Netflix'
+      - platform: state
+        entity_id: sensor.living_room_tv_source
+        to: 'SBS on Demand'
+      - platform: state
+        entity_id: sensor.living_room_tv_source
+        to: 'YouTube'
+    action:
+    - service: switch.turn_on
+      entity_id: switch.nzbget_pause
