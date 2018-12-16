@@ -1,8 +1,8 @@
 ###############################################################################
 #   @author         :   Trent Stanton
 #   @date           :   7/05/2018
-#   @package        :   MiLight / Limitless LED
-#   @description    :   MiLight Setup and Automations inc. Remote Forwarder,Auto Entryway Light, Auto Entry Light
+#   @package        :   Downlights / MiLights / Limitless LEDs
+#   @description    :   MiLight Setup and Downlight Automations inc. Remote Forwarder,Auto Entryway Light, Auto Entry Light
 #   @url            :   
 ###############################################################################
 input_boolean:

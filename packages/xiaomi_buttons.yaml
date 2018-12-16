@@ -1,119 +1,131 @@
 ###############################################################################
 #   @author         :   Trent Stanton
-#   @date           :   1/09/2018
+#   @date           :   16/12/2018
 #   @package        :   Xiaomi Buttons
-#   @description    :   Xiaomi Buttons
+#   @description    :   Xiaomi Buttons via MQTT
 #   @url            :   
 ###############################################################################
+
+script:
+## Trent Bed Room Button - Turn Trent Bedside Lamp on
+  trent_bed_room_button_single:
+    sequence:
+      - service: light.toggle
+        data:
+          entity_id: light.trent_bedside
+## Trent Bed Room Button - Turn Both Bedside Lamps on
+  trent_bed_room_button_double:
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id: light.trent_bedside
+      - service: light.turn_on
+        data:
+          entity_id: light.rachel_bedside
+#  trent_bed_room_button_triple:
+#  trent_bed_room_button_quadruple:
+#  trent_bed_room_button_many:
+## Trent Bed Room Button - Good Night
+  trent_bed_room_button_long:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.good_night
+#  trent_bed_room_button_long_release:
+# Rachel Bed Room Button - Turn Rachel Bedside Lamp on
+  rachel_bed_room_button_single:
+    sequence:
+      - service: light.toggle
+        data:
+          entity_id: light.rachel_bedside
+## Rachel Bed Room Button - Turn Both Bedside Lamps on
+  rachel_bed_room_button_double:
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id: light.trent_bedside
+      - service: light.turn_on
+        data:
+          entity_id: light.rachel_bedside
+#  rachel_bed_room_button_triple:
+#  rachel_bed_room_button_quadruple:
+#  rachel_bed_room_button_many:
+## Rachel Bed Room Button - Good Night
+  rachel_bed_room_button_long:
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id: script.good_night
+#  rachel_bed_room_button_long_release:
 
 ###############################################################################
 #                               Automations
 ###############################################################################
 automation:
+
 ############################################################
 #
-# Trent Bed Room Button - Turn Trent Bedside Lamp on
+# Trent Bed Room Button
 #
 ############################################################
 
-  - alias: Trent Bed Room Button - Bedside Lamp toggle
+  - alias: Trent Bed Room Button
     trigger:
-    - platform: event
-      event_type: click
-      event_data:
-        entity_id: sensor.switch_trent_bedside
-        click_type: single
+      platform: mqtt
+      topic: 'zigbee2mqtt/0x00158d000186e632'
+    condition:
+      condition: template
+      value_template: "{{ trigger.payload_json.click in ('single','double','triple','quadruple','many','long') }}"
     action:
-    - service: light.toggle
-      entity_id: light.trent_bedside
+      - service_template: >
+          {% if trigger.payload_json.click == 'single' %}
+            script.trent_bed_room_button_single
+          {% elif trigger.payload_json.click == 'double' %}
+            script.trent_bed_room_button_double
+          {% elif trigger.payload_json.click == 'triple' %}
+            script.trent_bed_room_button_triple
+          {% elif trigger.payload_json.click == 'quadruple' %}
+            script.trent_bed_room_button_quadruple
+          {% elif trigger.payload_json.click == 'many' %}
+            script.trent_bed_room_button_many
+          {% elif trigger.payload_json.click == 'long' %}
+            script.trent_bed_room_button_long
+          {% elif trigger.payload_json.click == 'long_release' %}
+            script.trent_bed_room_button_long_release
+          {% else %}
+          {% endif %}
 
 ############################################################
 #
-# Trent Bed Room Button - Turn Both Bedside Lamp on
+# Rachel Bed Room Button
 #
 ############################################################
 
-  - alias: Trent Bed Room Button - Bedside Lamps on
+  - alias: Rachel Bed Room Button
     trigger:
-    - platform: event
-      event_type: click
-      event_data:
-        entity_id: sensor.switch_trent_bedside
-        click_type: double
+      platform: mqtt
+      topic: 'zigbee2mqtt/0x00158d00016449a2'
+    condition:
+      condition: template
+      value_template: "{{ trigger.payload_json.click in ('single','double','triple','quadruple','many','long') }}"
     action:
-    - service: light.on
-      entity_id: light.trent_bedside
-    - service: light.on
-      entity_id: light.rachel_bedside
-
-############################################################
-#
-# Trent Bed Room Button - Good Night
-#
-############################################################
-
-  - alias: Trent Bed Room Button - Good Night
-    trigger:
-    - platform: event
-      event_type: click
-      event_data:
-        entity_id: sensor.switch_trent_bedside
-        click_type: hold
-    action:
-    - service: script.turn_on
-      entity_id: script.good_night
-
-############################################################
-#
-# Rachel Bed Room Button - Turn Rachel Bedside Lamp on
-#
-############################################################
-
-  - alias: Rachel Bed Room Button - Rachel Bedside Lamp toggle
-    trigger:
-    - platform: event
-      event_type: click
-      event_data:
-        entity_id: sensor.switch_rachel_bedside
-        click_type: single
-    action:
-    - service: light.toggle
-      entity_id: light.rachel_bedside
-
-############################################################
-#
-# Rachel Bed Room Button - Turn Both Bedside Lamp on
-#
-############################################################
-  - alias: Rachel Bed Room Button - Bedside Lamp on
-    trigger:
-    - platform: event
-      event_type: click
-      event_data:
-        entity_id: sensor.switch_rachel_bedside
-        click_type: double
-    action:
-    - service: light.on
-      entity_id: light.trent_bedside
-    - service: light.on
-      entity_id: light.rachel_bedside
-
-############################################################
-#
-# Rachel Bed Room Button - Good Night
-#
-############################################################
-
-  - alias: Rachel Bed Room Button - Good Night
-    trigger:
-    - platform: event
-      event_type: click
-      event_data:
-        entity_id: sensor.switch_rachel_bedside
-        click_type: hold
-    action:
-    - service: script.turn_on
-      entity_id: script.good_night
+      - service_template: >
+          {% if trigger.payload_json.click == 'single' %}
+            script.rachel_bed_room_button_single
+          {% elif trigger.payload_json.click == 'double' %}
+            script.rachel_bed_room_button_double
+          {% elif trigger.payload_json.click == 'triple' %}
+            script.rachel_bed_room_button_triple
+          {% elif trigger.payload_json.click == 'quadruple' %}
+            script.rachel_bed_room_button_quadruple
+          {% elif trigger.payload_json.click == 'many' %}
+            script.rachel_bed_room_button_many
+          {% elif trigger.payload_json.click == 'long' %}
+            script.rachel_bed_room_button_long
+          {% elif trigger.payload_json.click == 'long_release' %}
+            script.rachel_bed_room_button_long_release
+          {% else %}
+          {% endif %}
 
 ############################################################
 #

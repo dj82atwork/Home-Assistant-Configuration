@@ -33,7 +33,9 @@ media_player:
         - Plex
         - PS4
         - Xbox One
+        - Retropie
         - Netflix
+        - Amazon Prime Video
         - YouTube
         - 9Now
         - ABC iview
@@ -43,7 +45,6 @@ media_player:
         - TV Guide
         - TV Scheduler
         - HDMI 2
-        - HDMI 4
     turn_on_action:
         service: wake_on_lan.send_magic_packet
         data:
