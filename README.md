@@ -66,6 +66,7 @@
 * Trash and Recycle Bin night reminders - Thanks [CCOSTAN](https://github.com/CCOSTAN/Home-AssistantConfig)!
 * Washing Machine monitoring and reminders - Thanks [philhawthorne](https://philhawthorne.com/making-dumb-dishwashers-and-washing-machines-smart-alerts-when-the-dishes-and-clothes-are-cleaned/)!
 * TV Media Player Control with Picture Elements Card - Thanks [mattclair](https://github.com/mattclair/Home-AssistantConfig)
+* NZBGet Downloads Pause when opening streaming apps (Netflix, Youtube, Amazon Prime Video etc.)
 
 # Screenshots
 #### Day Theme
