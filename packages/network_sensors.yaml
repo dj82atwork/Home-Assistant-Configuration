@@ -1,6 +1,6 @@
 ###############################################################################
 #   @author         :   Trent Stanton
-#   @date           :   10/03/2018
+#   @date           :   16/12/2018
 #   @package        :   Network Sensors
 #   @description    :   
 #   @url            :   
@@ -78,38 +78,62 @@ sensor:
     username: !secret nzbget_username
     password: !secret nzbget_password
     monitored_variables:
+      - average_download_rate
       - download_rate
       - download_paused
+      - download_size
+      - remaining_size
+      - uptime
 # Device Tracking + Activity Templates
   - platform: template
     sensors:
       xboxonex:
         friendly_name: 'Living Room Xbox One X'
+        entity_id:
+          - device_tracker.2C54915E056B
         value_template: "{{ 'Online' if is_state('device_tracker.2C54915E056B', 'home') else 'Offline' }}"
       xboxones:
         friendly_name: 'Projector Room Xbox One S'
+        entity_id:
+          - device_tracker.c49ded3b63e5
         value_template: "{{ 'Online' if is_state('device_tracker.c49ded3b63e5', 'home') else 'Offline' }}"
       ps4:
         friendly_name: 'Projector Room Playstation 4'
+        entity_id:
+          - device_tracker.ac899510c96d
         value_template: "{{ 'Online' if is_state('device_tracker.ac899510c96d', 'home') else 'Offline' }}"
       xiaomigateway:
         friendly_name: 'Xiaomi Gateway'
+        entity_id:
+          - device_tracker.34ce008d81ef
         value_template: "{{ 'Online' if is_state('device_tracker.34ce008d81ef', 'home') else 'Offline' }}"
       livingroomgooglehome:
         friendly_name: 'Living Room Google Home'
+        entity_id:
+          - device_tracker.f4f5d8dc6f8e
         value_template: "{{ 'Online' if is_state('device_tracker.f4f5d8dc6f8e', 'home') else 'Offline' }}"
       bedroomgooglehomemini:
         friendly_name: 'Bed Room Google Home Mini'
+        entity_id:
+          - device_tracker.48d6d58305fa
         value_template: "{{ 'Online' if is_state('device_tracker.48d6d58305fa', 'home') else 'Offline' }}"
       livingroomchromecast:
         friendly_name: 'Living Room Chromecast'
+        entity_id:
+          - device_tracker.a477337ee656
         value_template: "{{ 'Online' if is_state('device_tracker.a477337ee656', 'home') else 'Offline' }}"
       bedroomchromecast:
         friendly_name: 'Bed Room Chromecast'
+        entity_id:
+          - device_tracker.80d21d2c642a
         value_template: "{{ 'Online' if is_state('device_tracker.80d21d2c642a', 'home') else 'Offline' }}"
       outsidechromecast:
         friendly_name: 'Outside Chromecast Audio'
+        entity_id:
+          - device_tracker.546009dca412
         value_template: "{{ 'Online' if is_state('device_tracker.546009dca412', 'home') else 'Offline' }}"
       livingroomtv:
         friendly_name: 'Living Room TV'
+        entity_id:
+          - device_tracker.f8042e789976
         value_template: "{{ 'Online' if is_state('device_tracker.f8042e789976', 'home') else 'Offline' }}"

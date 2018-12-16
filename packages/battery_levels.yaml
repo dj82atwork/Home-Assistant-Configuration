@@ -128,6 +128,8 @@ sensor:
   - platform: template
     sensors:
       battery_spareswitch_sensor:
+        entity_id:
+          - sensor.switch_spare
         value_template: '{% if states.sensor.switch_spare is not none %}
           {{ states.sensor.switch_spare.attributes.battery }}
           {% else %}
@@ -136,6 +138,8 @@ sensor:
         unit_of_measurement: '%'
         friendly_name: 'Spare Switch Sensor Battery'
       battery_trentbedsideswitch_sensor:
+        entity_id:
+          - sensor.switch_trent_bedside
         value_template: '{% if states.sensor.switch_trent_bedside is not none %}
           {{ states.sensor.switch_trent_bedside.attributes.battery }}
           {% else %}
@@ -144,6 +148,8 @@ sensor:
         unit_of_measurement: '%'
         friendly_name: 'Trent Bedside Switch Sensor Battery'
       battery_rachelbedsideswitch_sensor:
+        entity_id:
+          - sensor.switch_trent_bedside
         value_template: '{% if states.sensor.switch_trent_bedside is not none %}
           {{ states.sensor.switch_trent_bedside.attributes.battery }}
           {% else %}
@@ -152,6 +158,8 @@ sensor:
         unit_of_measurement: '%'
         friendly_name: 'Rachel Bedside Switch Sensor Battery'
       battery_entryswitch_sensor:
+        entity_id:
+          - sensor.wall_switch_entryway
         value_template: '{% if states.sensor.wall_switch_entryway is not none %}
           {{ states.sensor.wall_switch_entryway.attributes.battery }}
           {% else %}
@@ -160,6 +168,8 @@ sensor:
         unit_of_measurement: '%'
         friendly_name: 'Entryway Switch Sensor Battery'
       battery_bedroomtemp_sensor:
+        entity_id:
+          - sensor.temperature_bedroom
         value_template: '{% if states.sensor.temperature_bedroom is not none %}
           {{ states.sensor.temperature_bedroom.attributes.battery }}
           {% else %}
@@ -168,6 +178,8 @@ sensor:
         unit_of_measurement: '%'
         friendly_name: 'Bedroom Temp Sensor Battery'
       battery_livingroommulti_sensor:
+        entity_id:
+          - zwave.fibaro_system_fgms001zw5_motion_sensor
         value_template: '{% if states.zwave.fibaro_system_fgms001zw5_motion_sensor is not none %}
           {{ states.zwave.fibaro_system_fgms001zw5_motion_sensor.attributes.battery_level }}
           {% else %}
@@ -176,6 +188,8 @@ sensor:
         unit_of_measurement: '%'
         friendly_name: 'Living Room Multi Sensor Battery'
       battery_smartlock:
+        entity_id:
+          - zwave.kas600_zwave_lock
         value_template: '{% if states.zwave.kas600_zwave_lock is not none %}
           {{ states.zwave.kas600_zwave_lock.attributes.battery_level }}
           {% else %}

@@ -1,0 +1,18 @@
+###############################################################################
+#   @author         :   Trent Stanton
+#   @date           :   16/12/2018
+#   @package        :   ZWave Device Setup
+#   @description    :   
+#   @url            :   
+###############################################################################
+homeassistant:
+  customize:
+    switch.livingroom_light:
+      icon: mdi:lightbulb
+    switch.kitchen_light:
+      icon: mdi:lightbulb
+
+zwave:
+  usb_path: /dev/ttyACM1
+  network_key: !secret secure_zwave_key
+  autoheal: true

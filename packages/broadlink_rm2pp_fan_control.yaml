@@ -80,7 +80,7 @@ input_number:
     min: 1
     max: 6
     step: 1
-    initial: 2
+#    initial: 2
     mode: slider
 
 input_select:
@@ -90,12 +90,13 @@ input_select:
       - Forward
       - Reverse
       - Power Off
-    initial: Power Off
+#    initial: Power Off
     icon: mdi:settings
 
 sensor:
   - platform: template
     sensors:
+# Value Example 'forward_1' or 'reverse_1'
       fan_operation_mode_temp:
         entity_id:
           - input_select.fan_operation_mode
@@ -111,9 +112,22 @@ sensor:
             poweroff
           {% endif %}
       fan_setting:
+        entity_id:
+          - sensor.fan_operation_mode
+          - input_number.fan_speed
         friendly_name: 'Current Fan Setting'
         value_template: 'switch.{{ states.sensor.fan_operation_mode_temp.state }}_{{ states.input_number.fan_speed.state | int }}'
-# Value Example 'forward_1' or 'reverse_1'
+# Mqtt Persistence
+  - platform: mqtt
+    state_topic: "/home/bedroomfanspeed"
+    name: "Bedroom Fan Speed"
+    value_template: "{{ value }}"
+    qos: 1
+  - platform: mqtt
+    state_topic: "/home/bedroomfanoperation"
+    name: "Bedroom Fan Operation"
+    value_template: "{{ value }}"
+    qos: 1
 
 ###############################################################################
 #                               Automations
@@ -147,3 +161,47 @@ automation:
     action:
     - service: switch.turn_on
       entity_id: switch.fanpoweroff
+
+# Mqtt Persistence
+  - alias: Bedroom Fan Speed Changed
+    initial_state: true
+    hide_entity: true
+    trigger:
+    - platform: state
+      entity_id: input_number.fan_speed
+    action:
+    - service: mqtt.publish
+      data_template:
+        topic: "/home/bedroomfanspeed"
+        retain: true
+        payload: '{{ states.input_number.fan_speed.state }}'
+  - alias: Bedroom Fan Operating Mode Changed
+    initial_state: true
+    hide_entity: true
+    trigger:
+    - platform: state
+      entity_id: input_select.fan_operation_mode
+    action:
+    - service: mqtt.publish
+      data_template:
+        topic: "/home/bedroomfanoperation"
+        retain: true
+        payload: '{{ states.input_select.fan_operation_mode.state }}'
+
+  - alias: Restore Trash Recycle Settings on Startup
+    initial_state: true
+    hide_entity: true
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      - delay:
+          minutes: 1
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.fan_speed
+          option: "{{states.sensor.bedroom_fan_speed.state}}"
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.trash_pickup_day
+          option: "{{states.sensor.bedroom_fan_operation.state}}"

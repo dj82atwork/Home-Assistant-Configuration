@@ -5,6 +5,11 @@
 #   @description    :   Google Assistant for Voice Control of Devices
 #   @url            :   
 ###############################################################################
+homeassistant:
+  customize:
+    script.good_night:
+      friendly_name: Good Night
+      icon: mdi:sleep
 
 google_assistant:
   project_id: !secret gh_project_id

@@ -15,6 +15,7 @@ input_boolean:
   disable_nzbget_unpause_schedule:
     name: Disable NZBGet Unpause Schedule
     initial: off
+    icon: 'mdi:download'
 
 sensor:
   - platform: template

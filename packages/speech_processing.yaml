@@ -84,7 +84,6 @@ script:
         entity_id:
           - input_boolean.alert_mode
           - input_boolean.lastmsg
-
 sensor:
   - platform: mqtt
     state_topic: "broadcast/lastmsg"
@@ -95,12 +94,10 @@ sensor:
 
 automation:
   - alias: 'Repeat Last Message'
-
     trigger:
       - platform: state
         entity_id: input_boolean.lastmsg
         to: 'on'
-
     action:
       - service: notify.google_assistant_broadcast
         data_template:
