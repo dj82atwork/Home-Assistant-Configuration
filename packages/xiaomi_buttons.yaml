@@ -16,13 +16,14 @@ script:
 ## Trent Bed Room Button - Turn Both Bedside Lamps on
   trent_bed_room_button_double:
     sequence:
-      - service: light.turn_on
+      - service: scene.turn_on
         data:
-          entity_id: light.trent_bedside
-      - service: light.turn_on
+          entity_id: scene.bedroom_default
+  trent_bed_room_button_triple:
+    sequence:
+      - service: scene.turn_on
         data:
-          entity_id: light.rachel_bedside
-#  trent_bed_room_button_triple:
+          entity_id: scene.bedroom_romantic
 #  trent_bed_room_button_quadruple:
 #  trent_bed_room_button_many:
 ## Trent Bed Room Button - Good Night
@@ -41,13 +42,15 @@ script:
 ## Rachel Bed Room Button - Turn Both Bedside Lamps on
   rachel_bed_room_button_double:
     sequence:
-      - service: light.turn_on
+    sequence:
+      - service: scene.turn_on
         data:
-          entity_id: light.trent_bedside
-      - service: light.turn_on
+          entity_id: scene.bedroom_default
+  rachel_bed_room_button_triple:
+    sequence:
+      - service: scene.turn_on
         data:
-          entity_id: light.rachel_bedside
-#  rachel_bed_room_button_triple:
+          entity_id: scene.bedroom_romantic
 #  rachel_bed_room_button_quadruple:
 #  rachel_bed_room_button_many:
 ## Rachel Bed Room Button - Good Night

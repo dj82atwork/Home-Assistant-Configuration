@@ -105,6 +105,9 @@ script:
       - service: lock.lock
         data:
           entity_id: lock.front_door
+      - service: switch.turn_off
+        data:
+          entity_id: switch.nzbget_pause
       - condition: or
         conditions:
           - condition: numeric_state

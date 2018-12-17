@@ -22,6 +22,30 @@ light:
       !secret yeelink_light_strip:
         name: Yeelink Light Strip
       !secret trent_bedside_light_ip:
+        model: color1
         name: Trent Bedside
       !secret rachel_bedside_light_ip:
+        model: color1
         name: Rachel Bedside
+
+scene:
+  - name: Bedroom Default
+    entities:
+      light.trent_bedside:
+        state: true
+        xy_color: [0.621, 0.367]
+        brightness: 15
+      light.rachel_bedside:
+        state: true
+        xy_color: [0.621, 0.367]
+        brightness: 15
+  - name: Bedroom Romantic
+    entities:
+      light.trent_bedside:
+        state: true
+        xy_color: [0.51, 0.239]
+        brightness: 5
+      light.rachel_bedside:
+        state: true
+        xy_color: [0.51, 0.239]
+        brightness: 5

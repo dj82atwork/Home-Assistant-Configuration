@@ -49,6 +49,7 @@ media_player:
         service: wake_on_lan.send_magic_packet
         data:
           mac: !secret webostv_mac
+## Also used in 'downloads.yaml'.
 sensor:
   - platform: template
     sensors:
@@ -56,7 +57,7 @@ sensor:
         entity_id:
           - media_player.living_room_tv
         value_template: "{{ states.media_player.living_room_tv.attributes.source }}"
-
+        friendly_name: 'Living Room TV Source'
 group:
   media_living_room_home:
     name: Media Living Room Home

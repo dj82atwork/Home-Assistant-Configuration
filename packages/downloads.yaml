@@ -17,14 +17,15 @@ input_boolean:
     initial: off
     icon: 'mdi:download'
 
-sensor:
-  - platform: template
-    sensors:
-      living_room_tv_source:
-        entity_id:
-          - media_player.living_room_tv
-        value_template: '{{ states.media_player.living_room_tv.attributes["source"] }}'
-        friendly_name: 'Living Room TV Source'
+## Taken from 'media_players.yaml'.
+#sensor:
+#  - platform: template
+#    sensors:
+#      living_room_tv_source:
+#        entity_id:
+#          - media_player.living_room_tv
+#        value_template: '{{ states.media_player.living_room_tv.attributes["source"] }}'
+#        friendly_name: 'Living Room TV Source'
 
 switch:
   - platform: command_line
