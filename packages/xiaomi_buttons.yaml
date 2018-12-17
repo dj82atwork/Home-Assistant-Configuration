@@ -42,7 +42,6 @@ script:
 ## Rachel Bed Room Button - Turn Both Bedside Lamps on
   rachel_bed_room_button_double:
     sequence:
-    sequence:
       - service: scene.turn_on
         data:
           entity_id: scene.bedroom_default
