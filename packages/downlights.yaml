@@ -128,7 +128,7 @@ automation:
         entity_id: input_boolean.disable_livingroom_light_frontdoor
         state: 'off'
       - condition: state
-        entity_id: binary_sensor.fibaro_system_fgms001zw5_motion_sensor_sensor
+        entity_id: binary_sensor.fibaro_motion_sensor_sensor
         state: 'off'
         for:
           minutes: 10

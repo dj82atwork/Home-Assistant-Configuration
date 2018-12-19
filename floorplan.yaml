@@ -51,7 +51,7 @@
             '
         - name: Sensors
           entities:
-             - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
+             - sensor.fibaro_motion_sensor_temperature
              - sensor.temperature_158d0001a2e878
              - sensor.weather_temperature
           text_template: '${entity.state ? entity.state : "unknown"}°C'

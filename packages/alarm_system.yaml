@@ -12,7 +12,7 @@ group:
     entities:
       - lock.front_door
       - alarm_control_panel.ha_alarm
-      - binary_sensor.motion
+      - binary_sensor.fibaro_motion_sensor_sensor
       - binary_sensor.motion_hallway
 
 # MQTT Control Panel
@@ -30,7 +30,7 @@ automation:
   - alias: 'Trigger alarm while armed away'
     trigger:
     - platform: state
-      entity_id: binary_sensor.motion
+      entity_id: binary_sensor.fibaro_motion_sensor_sensor
       to: 'on'
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d00015b5ae2

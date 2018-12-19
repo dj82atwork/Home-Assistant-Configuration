@@ -16,7 +16,7 @@ group:
       - input_select.ac_swing_mode
       - input_number.ac_target_temp
       - sensor.ac_target
-      - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
+      - sensor.fibaro_motion_sensor_temperature
   ac_scheduler:
     name: AC Scheduler
     control: hidden

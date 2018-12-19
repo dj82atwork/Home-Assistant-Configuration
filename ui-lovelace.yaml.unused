@@ -224,7 +224,7 @@ views:
           - input_select.ac_swing_mode
           - input_number.ac_target_temp
           - sensor.ac_target
-          - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
+          - sensor.fibaro_motion_sensor_temperature
       - type: entities
         title: AC Scheduler
         show_header_toggle: false
@@ -538,9 +538,9 @@ views:
       - type: entities
         title: Multisensors
         entities:
-          - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
-          - sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
-          - sensor.fibaro_system_fgms001zw5_motion_sensor_seismic_intensity
+          - sensor.fibaro_motion_sensor_temperature
+          - sensor.fibaro_motion_sensor_luminance
+          - sensor.fibaro_motion_sensor_seismic_intensity
           - binary_sensor.motion
           - binary_sensor.tampering
           - binary_sensor.motion_hallway

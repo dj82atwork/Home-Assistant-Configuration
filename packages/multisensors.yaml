@@ -1,38 +1,32 @@
 ###############################################################################
 #   @author         :   Trent Stanton
-#   @date           :   7/05/2018
+#   @date           :   19/12/2018
 #   @package        :   Multisensors
 #   @description    :   
 #   @url            :   
 ###############################################################################
 homeassistant:
   customize:
-    sensor.fibaro_system_fgms001zw5_motion_sensor_temperature:
-      friendly_name: Living Room Temperature
-      icon: mdi:thermometer
-    sensor.fibaro_system_fgms001zw5_motion_sensor_luminance:
-      friendly_name: Living Room Luminance
-      icon: mdi:brightness-7
-    sensor.fibaro_system_fgms001zw5_motion_sensor_seismic_intensity:
-      friendly_name: Living Room Seismic Intensity
-      icon: mdi:vibrate
-    binary_sensor.motion:
-      friendly_name: Living Room Motion
+    sensor.fibaro_motion_sensor_luminance:
+      device_class: illuminance
+    sensor.fibaro_motion_sensor_seismic_intensity:
+      icon: mdi:earth
+    binary_sensor.fibaro_motion_sensor_sensor:
+      device_class: motion
     binary_sensor.tampering:
-      friendly_name: Living Room Sensor Tampering
-      icon: mdi:shield-outline
+      device_class: moving
 
 group:
   multisensor:
     name: Multisensors
     entities:
-      - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
-  #    - sensor.fibaro_system_fgms001zw5_motion_sensor_sourcenodeid
-      - sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
-      - sensor.fibaro_system_fgms001zw5_motion_sensor_seismic_intensity
-  #    - sensor.fibaro_system_fgms001zw5_motion_sensor_general
-  #    - sensor.fibaro_system_fgms001zw5_motion_sensor_burglar
-      - binary_sensor.motion
+      - sensor.fibaro_motion_sensor_temperature
+  #    - sensor.fibaro_motion_sensor_sourcenodeid
+      - sensor.fibaro_motion_sensor_luminance
+      - sensor.fibaro_motion_sensor_seismic_intensity
+  #    - sensor.fibaro_motion_sensor_general
+  #    - sensor.fibaro_motion_sensor_burglar
+      - binary_sensor.fibaro_motion_sensor_sensor
       - binary_sensor.tampering
       - binary_sensor.motion_hallway
       - sensor.temperature_bedroom
@@ -41,15 +35,10 @@ group:
 binary_sensor:
   - platform: template
     sensors:
-      motion:
-        entity_id:
-          - sensor.fibaro_system_fgms001zw5_motion_sensor_burglar
-        value_template: '{{ is_state("sensor.fibaro_system_fgms001zw5_motion_sensor_burglar", "8") }}'
-        device_class: motion
       tampering:
         entity_id:
-          - sensor.fibaro_system_fgms001zw5_motion_sensor_burglar
-        value_template: '{{ is_state("sensor.fibaro_system_fgms001zw5_motion_sensor_burglar", "3") }}'
+          - sensor.fibaro_motion_sensor_burglar
+        value_template: '{{ is_state("sensor.fibaro_motion_sensor_burglar", "3") }}'
 input_boolean:
   disable_unexpected_motion_notification:
     name: Disable Unexpected Motion Notification
@@ -71,8 +60,8 @@ automation:
   - alias: Unexpected Motion Notification
     trigger:
     - platform: state
-      entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_burglar
-      to: '8'
+      entity_id: binary_sensor.fibaro_motion_sensor_sensor
+      to: 'on'
     condition:
       condition: and
       conditions:
@@ -97,8 +86,8 @@ automation:
   - alias: Device Tampering Notification
     trigger:
     - platform: state
-      entity_id: sensor.fibaro_system_fgms001zw5_motion_sensor_burglar
-      to: '3'
+      entity_id: binary_sensor.tampering
+      to: 'on'
     condition:
     - condition: state
       entity_id: input_boolean.disable_device_tampering_notification
@@ -118,7 +107,7 @@ automation:
         entity_id: input_boolean.disable_current_temperature_notification
         state: 'off'
       - condition: numeric_state
-        entity_id: 'sensor.fibaro_system_fgms001zw5_motion_sensor_temperature'
+        entity_id: 'sensor.fibaro_motion_sensor_temperature'
         above: '23'
       - condition: state
         entity_id: device_tracker.rachels_iphone
@@ -135,7 +124,7 @@ automation:
     - service: notify.trent
       data_template:
         title: "Home Temperature"
-        message: "Home is currently at {{ states.sensor.fibaro_system_fgms001zw5_motion_sensor_temperature.state }} °C."
+        message: "Home is currently at {{ states.sensor.fibaro_motion_sensor_temperature.state }} °C."
         data:
           actions:
           - action: open

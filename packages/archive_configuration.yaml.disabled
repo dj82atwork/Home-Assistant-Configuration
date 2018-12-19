@@ -54,7 +54,7 @@ dialogflow:
   intent_script:
     GetHomeTemperature:
       speech:
-        text: The temperature at home is {{ states('sensor.fibaro_system_fgms001zw5_motion_sensor_temperature') }} degrees
+        text: The temperature at home is {{ states('sensor.fibaro_motion_sensor_temperature') }} degrees
         
 # Bayesian Sensor - Home Sensor
 binary_sensor:

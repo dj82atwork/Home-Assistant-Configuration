@@ -75,7 +75,7 @@ livingroom_temperature:
     title: Living Room Temperature
     units: "&deg;C"
     precision: 0
-    entity: sensor.fibaro_system_fgms001zw5_motion_sensor_temperature
+    entity: sensor.fibaro_motion_sensor_temperature
     title_style: "font-size: 120%"
     widget_style: "color: $blue; font-size: 120%"
     unit_style: "color: $blue"
@@ -86,7 +86,7 @@ livingroom_lux:
     units: "lux"
     precision: 0
     shorten: 1
-    entity: sensor.fibaro_system_fgms001zw5_motion_sensor_luminance
+    entity: sensor.fibaro_motion_sensor_luminance
     title_style: "font-size: 120%"
     widget_style: "color: $blue; font-size: 120%"
     unit_style: "color: $blue"

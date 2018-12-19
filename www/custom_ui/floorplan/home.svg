@@ -178,10 +178,10 @@
        id="path54"
        d="M 1982.299,2038.1881 H 1436.7167 V 1877.1077 H 1294.9212 V 1661.8139 H 1982.299 Z" /><g
        id="g5028"><g
-         id="sensor.fibaro_system_fgms001zw5_motion_sensor_temperature"
-         inkscape:label="sensor.fibaro_system_fgms001zw5_motion_sensor_temperature"><text
-           inkscape:label="compsensor.fibaro_system_fgms001zw5_motion_sensor_temperature"
-           id="compsensor.fibaro_system_fgms001zw5_motion_sensor_temperature"
+         id="sensor.fibaro_motion_sensor_temperature"
+         inkscape:label="sensor.fibaro_motion_sensor_temperature"><text
+           inkscape:label="compsensor.fibaro_motion_sensor_temperature"
+           id="compsensor.fibaro_motion_sensor_temperature"
            y="3960.9534"
            x="2462.1523"
            style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:60px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#646464;fill-opacity:1;stroke:none;stroke-width:2.56392646"
@@ -196,7 +196,7 @@
            id="path5024"
            d="m 2561.6066,4075.88 a 30.767555,30.767555 0 0 1 -30.7676,30.7676 30.767555,30.767555 0 0 1 -30.7674,-30.7676 c 0,-10.0918 4.8612,-19.0144 12.3069,-24.6141 v -49.228 a 18.460532,18.460532 0 0 1 18.4605,-18.4605 18.460532,18.460532 0 0 1 18.4606,18.4605 v 49.228 c 7.4458,5.5997 12.307,14.5223 12.307,24.6141 m -36.921,-55.3816 v 37.9672 c -7.1996,2.5229 -12.3071,9.3532 -12.3071,17.4144 a 18.460532,18.460532 0 0 0 18.4605,18.4605 18.460532,18.460532 0 0 0 18.4606,-18.4605 c 0,-8.0612 -5.1074,-14.8915 -12.307,-17.4144 v -37.9672 z"
            inkscape:connector-curvature="0"
-           inkscape:label="sensor.fibaro_system_fgms001zw5_motion_sensor_temperature" /></g></g><path
+           inkscape:label="sensor.fibaro_motion_sensor_temperature" /></g></g><path
        style="fill:#dcdcdc;fill-opacity:1;stroke:none;stroke-width:2.00001001;stroke-opacity:1"
        inkscape:connector-curvature="0"
        id="path58"
@@ -1961,10 +1961,10 @@
        style="font-weight:bold;font-family:sans-serif"
        id="sensor.temperature_158d0001a2e878"
        inkscape:label="sensor.temperature_158d0001a2e878"><g
-         id="sensor.fibaro_system_fgms001zw5_motion_sensor_temperature-8"
-         inkscape:label="sensor.fibaro_system_fgms001zw5_motion_sensor_temperature"><text
-           inkscape:label="compsensor.fibaro_system_fgms001zw5_motion_sensor_temperature"
-           id="compsensor.fibaro_system_fgms001zw5_motion_sensor_temperature-2"
+         id="sensor.fibaro_motion_sensor_temperature-8"
+         inkscape:label="sensor.fibaro_motion_sensor_temperature"><text
+           inkscape:label="compsensor.fibaro_motion_sensor_temperature"
+           id="compsensor.fibaro_motion_sensor_temperature-2"
            y="3960.9534"
            x="2462.1523"
            style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:60px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#646464;fill-opacity:1;stroke:none;stroke-width:2.56392646"
@@ -1979,7 +1979,7 @@
            id="path5024-4"
            d="m 2561.6066,4075.88 a 30.767555,30.767555 0 0 1 -30.7676,30.7676 30.767555,30.767555 0 0 1 -30.7674,-30.7676 c 0,-10.0918 4.8612,-19.0144 12.3069,-24.6141 v -49.228 a 18.460532,18.460532 0 0 1 18.4605,-18.4605 18.460532,18.460532 0 0 1 18.4606,18.4605 v 49.228 c 7.4458,5.5997 12.307,14.5223 12.307,24.6141 m -36.921,-55.3816 v 37.9672 c -7.1996,2.5229 -12.3071,9.3532 -12.3071,17.4144 a 18.460532,18.460532 0 0 0 18.4605,18.4605 18.460532,18.460532 0 0 0 18.4606,-18.4605 c 0,-8.0612 -5.1074,-14.8915 -12.307,-17.4144 v -37.9672 z"
            inkscape:connector-curvature="0"
-           inkscape:label="sensor.fibaro_system_fgms001zw5_motion_sensor_temperature" /></g></g><path
+           inkscape:label="sensor.fibaro_motion_sensor_temperature" /></g></g><path
        inkscape:connector-curvature="0"
        style="font-weight:bold;font-family:sans-serif;fill:#cfe9d1;fill-opacity:1;stroke:none;stroke-width:2.00001001;stroke-opacity:1"
        id="path78-0"

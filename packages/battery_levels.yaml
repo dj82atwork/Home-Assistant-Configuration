@@ -179,9 +179,9 @@ sensor:
         friendly_name: 'Bedroom Temp Sensor Battery'
       battery_livingroommulti_sensor:
         entity_id:
-          - zwave.fibaro_system_fgms001zw5_motion_sensor
-        value_template: '{% if states.zwave.fibaro_system_fgms001zw5_motion_sensor is not none %}
-          {{ states.zwave.fibaro_system_fgms001zw5_motion_sensor.attributes.battery_level }}
+          - zwave.fibaro_motion_sensor
+        value_template: '{% if states.zwave.fibaro_motion_sensor is not none %}
+          {{ states.zwave.fibaro_motion_sensor.attributes.battery_level }}
           {% else %}
             n/a
           {% endif %}'
