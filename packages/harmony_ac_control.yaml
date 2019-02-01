@@ -164,7 +164,7 @@ automation:
 
   - alias: Turn On AC on schedule
     trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: /1
       seconds: 0
     condition:
@@ -185,7 +185,7 @@ automation:
 
   - alias: Turn Off AC on schedule
     trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: /1
       seconds: 0
     condition:

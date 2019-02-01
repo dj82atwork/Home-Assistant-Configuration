@@ -100,7 +100,6 @@ sensor:
       fan_operation_mode_temp:
         entity_id:
           - input_select.fan_operation_mode
-          - sensor.fan_operation_mode_temp
           - input_number.fan_speed
         friendly_name: "Fan Operation Mode Template"
         value_template: >-
@@ -113,7 +112,7 @@ sensor:
           {% endif %}
       fan_setting:
         entity_id:
-          - sensor.fan_operation_mode
+          - sensor.fan_operation_mode_temp
           - input_number.fan_speed
         friendly_name: 'Current Fan Setting'
         value_template: 'switch.{{ states.sensor.fan_operation_mode_temp.state }}_{{ states.input_number.fan_speed.state | int }}'
@@ -188,7 +187,7 @@ automation:
         retain: true
         payload: '{{ states.input_select.fan_operation_mode.state }}'
 
-  - alias: Restore Trash Recycle Settings on Startup
+  - alias: Restore Fan Settings on Startup
     initial_state: true
     hide_entity: true
     trigger:
@@ -203,5 +202,5 @@ automation:
           option: "{{states.sensor.bedroom_fan_speed.state}}"
       - service: input_select.select_option
         data_template:
-          entity_id: input_select.trash_pickup_day
+          entity_id: input_select.fan_operation_mode
           option: "{{states.sensor.bedroom_fan_operation.state}}"

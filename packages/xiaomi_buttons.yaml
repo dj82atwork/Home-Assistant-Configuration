@@ -33,7 +33,7 @@ script:
         data:
           entity_id: script.good_night
 #  trent_bed_room_button_long_release:
-# Rachel Bed Room Button - Turn Rachel Bedside Lamp on
+## Rachel Bed Room Button - Turn Rachel Bedside Lamp on
   rachel_bed_room_button_single:
     sequence:
       - service: light.toggle
@@ -59,6 +59,18 @@ script:
         data:
           entity_id: script.good_night
 #  rachel_bed_room_button_long_release:
+## Entryway Wall Switch - Entryway Light
+  wall_switch_entryway_left:
+    sequence:
+      - service: light.toggle
+        data:
+          entity_id: light.entryway
+## Entryway Wall Switch - Entry Light
+  wall_switch_entryway_right:
+    sequence:
+      - service: light.toggle
+        data:
+          entity_id: light.entry
 
 ###############################################################################
 #                               Automations
@@ -131,34 +143,22 @@ automation:
 
 ############################################################
 #
-# Entryway Button Right - Toggle Entry Light.
+# Entryway Button
 #
 ############################################################
 
-  - alias: Entryway Button Right - Toggle Entry Light
+  - alias: Trent Entryway Button
     trigger:
-    - platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.wall_switch_right_158d000170ef78
-        click_type: single
+      platform: mqtt
+      topic: 'zigbee2mqtt/0x00158d000170ef78'
+    condition:
+      condition: template
+      value_template: "{{ ('left','right') in trigger.payload_json.click }}"
     action:
-    - service: light.toggle
-      entity_id: light.entry
-
-############################################################
-#
-# Entryway Button Left - Toggle Entryway Light.
-#
-############################################################
-
-  - alias: Entryway Button Left - Toggle Entryway Light
-    trigger:
-    - platform: event
-      event_type: click
-      event_data:
-        entity_id: binary_sensor.wall_switch_left_158d000170ef78
-        click_type: single
-    action:
-    - service: light.toggle
-      entity_id: light.entryway
+      - service_template: >
+          {% if trigger.payload_json.click == 'left' %}
+            script.wall_switch_entryway_left
+          {% elif trigger.payload_json.click == 'right' %}
+            script.wall_switch_entryway_right
+          {% else %}
+          {% endif %}
