@@ -30,7 +30,7 @@ sensor:
 # Dark Sky Weather
   - platform: darksky
     api_key: !secret darksky_api
-    update_interval: '00:15:00'
+    scan_interval: '00:15:00'
     name: Weather
     monitored_conditions:
       - summary

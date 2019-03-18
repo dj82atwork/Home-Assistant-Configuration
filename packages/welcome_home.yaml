@@ -14,7 +14,6 @@ input_boolean:
 input_number:
   consider_recent_arrival_mins:
     name: Consider Recent Arrival Max Mins
-    initial: 3
     min: 1
     max: 10
     step: 1

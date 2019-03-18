@@ -1,0 +1,26 @@
+###############################################################################
+#   @author         :   Trent Stanton
+#   @date           :   11/03/2019
+#   @package        :   Glances System Monitor
+#   @description    :   Monitor the NUC PC
+#   @url            :   
+###############################################################################
+sensor:
+- platform: glances
+  host: !secret glances_host
+  username: !secret glances_username
+  password: !secret glances_password
+  name: TRENT-NUC
+  version: 3
+  resources:
+    - 'disk_use'
+    - 'disk_use_percent'
+    - 'disk_free'
+    - 'cpu_temp'
+    - 'cpu_use_percent'
+    - 'processor_load'
+    - 'memory_use'
+    - 'memory_use_percent'
+    - 'docker_active'
+    - 'docker_cpu_use'
+    - 'docker_memory_use'

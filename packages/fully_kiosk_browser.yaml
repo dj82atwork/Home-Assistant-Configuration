@@ -32,7 +32,7 @@ input_boolean:
 sensor:
   - platform: rest
     name: fkiosk
-    json_attributes_topic:
+    json_attributes:
       - batteryLevel
       - kioskMode
       - screenBrightness

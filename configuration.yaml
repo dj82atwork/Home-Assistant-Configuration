@@ -17,6 +17,15 @@ http:
   api_password: !secret api_password
   base_url: !secret base_url
 
+# Enables Default Home Assistant Components
+default_config:
+
+# Enables Person Component
+person:
+
+# Enables System Health
+system_health:
+
 panel_iframe:
 # Hass Configurator Panel
   configurator:
@@ -59,27 +68,10 @@ logbook:
       - sensor.uptime
       - sensor.time
       - sensor.date
+      - sensor.date_2
+      - sensor.date_time
+      - sensor.time_date
       - sensor.nzbget_speed
-#  include:
-#    entities:
-#      - device_tracker.google_maps_109209758211303121867
-#      - device_tracker.rachels_iphone
-#      - sensor.speedtest_ping
-#      - sensor.speedtest_download
-#      - sensor.speedtest_upload
-#      - sensor.nzbget_speed
-#      - sensor.livingroomtv
-#      - sensor.livingroomchromecast
-#      - sensor.bedroomchromecast
-#      - sensor.outsidechromecast
-#      - sensor.xboxone
-#      - sensor.ps4
-#      - sensor.weather_summary
-#      - sensor.weather_temperature
-#      - sensor.weather_precip_intensity
-#      - sensor.weather_humidity
-#    domains:
-#      - sun
 
 # Track the sun
 sun:
@@ -92,9 +84,10 @@ tts:
   text_type: ssml
   voice: Joanna
 
-# Purge Database Interval
+# Purge Database Interval and MariaDB
 recorder:
-  purge_interval: 2
+  db_url: !secret mariadb_url
+  purge_interval: 1
   purge_keep_days: 14
 
 sensor:

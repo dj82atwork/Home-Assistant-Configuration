@@ -62,16 +62,6 @@ group:
 sensor:
 # Uptime Sensor
   - platform: uptime
-# Speedtest
-  - platform: speedtest
-    minute: 30
-    hour:
-      - 0
-      - 12
-    monitored_conditions:
-      - ping
-      - download
-      - upload
 # NZBGet Monitoring
   - platform: nzbget
     host: !secret nzbget_ipaddress
@@ -137,3 +127,11 @@ sensor:
         entity_id:
           - device_tracker.f8042e789976
         value_template: "{{ 'Online' if is_state('device_tracker.f8042e789976', 'home') else 'Offline' }}"
+    
+speedtestdotnet:
+  scan_interval:
+    minutes: 360
+  monitored_conditions:
+    - ping
+    - download
+    - upload

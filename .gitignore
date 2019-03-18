@@ -50,3 +50,5 @@ hadaemon
 __pycache__/
 entity_registry.yaml
 notebooks
+node-red
+.google_maps_location*

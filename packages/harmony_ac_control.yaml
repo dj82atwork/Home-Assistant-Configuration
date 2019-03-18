@@ -1,6 +1,6 @@
 ###############################################################################
 #   @author         :   Trent Stanton
-#   @date           :   24/02/2018
+#   @date           :   27/02/2019
 #   @package        :   Harmony Air Conditioner Control
 #   @description    :   Control of AC Split System using Harmony Hub
 #   @url            :   https://community.home-assistant.io/t/ac-split-system-integration-via-harmony-remote/21248
@@ -45,15 +45,17 @@ input_number:
     initial: 21
     mode: slider
 
-input_text:
+input_datetime:
   ac_on_schedule:
     name: AC on schedule
+    has_date: false
+    has_time: true
     initial: '17:00'
-    pattern: '^[0-9]{1,2}:[0-9]{1,2}$'
   ac_off_schedule:
     name: AC off schedule
+    has_date: false
+    has_time: true
     initial: '23:30'
-    pattern: '^[0-9]{1,2}:[0-9]{1,2}$'
 
 input_select:
   ac_operation_mode:
@@ -164,16 +166,12 @@ automation:
 
   - alias: Turn On AC on schedule
     trigger:
-    - platform: time_pattern
-      minutes: /1
-      seconds: 0
+    - platform: template
+      value_template: "{{ states('sensor.time') == (states.input_datetime.ac_on_schedule.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
     condition:
     - condition: state
       entity_id: input_boolean.ac_on_schedule_active
       state: 'on'
-    - condition: template
-      value_template: '{{ now().strftime("%H:%M") == states.input_text.ac_on_schedule.state
-        }}'
     action:
     - service: input_select.select_option
       data:
@@ -185,16 +183,12 @@ automation:
 
   - alias: Turn Off AC on schedule
     trigger:
-    - platform: time_pattern
-      minutes: /1
-      seconds: 0
+    - platform: template
+      value_template: "{{ states('sensor.time') == (states.input_datetime.ac_off_schedule.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
     condition:
     - condition: state
       entity_id: input_boolean.ac_off_schedule_active
       state: 'on'
-    - condition: template
-      value_template: '{{ now().strftime("%H:%M") == states.input_text.ac_off_schedule.state
-        }}'
     action:
     - service: input_select.select_option
       data:

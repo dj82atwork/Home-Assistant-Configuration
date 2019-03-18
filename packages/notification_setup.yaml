@@ -22,7 +22,7 @@ notify:
     platform: group
     services:
       - service: ios_rachels_iphone
-# HASS IO Addon - Google Assistant API
+# Google Assistant Web Server API - https://github.com/robwolff3/google-assistant-webserver
   - name: google_assistant_broadcast
     platform: rest
     resource: !secret ga_api_broadcast_message

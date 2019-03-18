@@ -17,16 +17,16 @@ switch:
     mac: '34:EA:34:F5:E4:AC'
     type: spmini2
     friendly_name: 'Living Room Lamp'
-  - platform: broadlink
-    host: !secret broadlink_sw2_ip
-    mac: '34:EA:34:F5:E4:B0'
-    type: spmini2
-    friendly_name: 'Switch 2'
-  - platform: broadlink
-    host: !secret broadlink_sw3_ip
-    mac: '34:EA:34:F5:E1:18'
-    type: spmini2
-    friendly_name: 'Switch 3'
+#  - platform: broadlink
+#    host: !secret broadlink_sw2_ip
+#    mac: '34:EA:34:F5:E4:B0'
+#    type: spmini2
+#    friendly_name: 'Switch 2'
+#  - platform: broadlink
+#    host: !secret broadlink_sw3_ip
+#    mac: '34:EA:34:F5:E1:18'
+#    type: spmini2
+#    friendly_name: 'Switch 3'
   - platform: broadlink
     host: !secret broadlink_sw4_ip
     mac: '34:EA:34:F5:E4:F7'
