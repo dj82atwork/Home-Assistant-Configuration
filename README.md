@@ -6,7 +6,7 @@
 * HA Floorplan Configuration files including my SVG file can be found within the [www/customui/floorplan directory](https://github.com/stanvx/Home-Assistant-Configuration/tree/master/www/custom_ui/floorplan)
 
 # Devices
-* [Raspberry Pi 3](http://amzn.to/2nMYhkX) - Hass.io Installed
+* [Intel NUC8I7BEH](https://www.intel.com.au/content/www/au/en/products/boards-kits/nuc/kits/nuc8i7beh.html) - Ubuntu Server 18.04 with Hass.io.
 * [Aeotec Z-Stick Gen5](http://aeotec.com/z-wave-usb-stick)
 * [Synology DSM1815+ 8 Bay NAS](https://www.synology.com/en-global/products/DS1817+)
 * [CyberPower CP1300EPFCLCD UPS](https://www.cyberpower.com/vn/en/product/sku/CP1300EPFCLCD)
