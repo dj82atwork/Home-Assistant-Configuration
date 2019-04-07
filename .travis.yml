@@ -2,7 +2,6 @@ language: python
 python:
   - "3.6.4"
 before_install:
-  - mkdir /tmp
   - mkdir /share
   - mv travis_secrets.yaml secrets.yaml
 install:
