@@ -2,7 +2,7 @@ language: python
 python:
   - "3.6.4"
 before_install:
-  - mkdir /share
+  - sudo mkdir /share
   - mv travis_secrets.yaml secrets.yaml
 install:
   - pip3 install homeassistant
