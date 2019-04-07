@@ -8,6 +8,8 @@
 googlehome:
   devices:
     - host: !secret gh_livingroom_ip
-      track_alarms:
+      track_alarms: true
+      track_devices: false
     - host: !secret gh_bedroom_ip
-      track_alarms:
+      track_alarms: true
+      track_devices: false

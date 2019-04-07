@@ -13,20 +13,20 @@ homeassistant:
       icon: mdi:lamp
     light.study_desk_lamp:
       icon: mdi:lamp
-light:
-  - platform: yeelight
-    devices:
-      !secret study_desk_lamp_light_ip:
-        name: Study Desk Lamp
-        transition: 1000
-      !secret yeelink_light_strip:
-        name: Yeelink Light Strip
-      !secret trent_bedside_light_ip:
-        model: color1
-        name: Trent Bedside
-      !secret rachel_bedside_light_ip:
-        model: color1
-        name: Rachel Bedside
+
+yeelight:
+  devices:
+    !secret study_desk_lamp_light_ip:
+      name: Study Desk Lamp
+      transition: 1000
+    !secret yeelink_light_strip:
+      name: Yeelink Light Strip
+    !secret trent_bedside_light_ip:
+      model: color1
+      name: Trent Bedside
+    !secret rachel_bedside_light_ip:
+      model: color1
+      name: Rachel Bedside
 
 scene:
   - name: Bedroom Default

@@ -175,7 +175,7 @@ automation:
   - alias: Start Daily Vacuum
     trigger:
     - platform: state
-      entity_id: group.family
+      entity_id: group.family_presence
       from: 'home'
       to: 'not_home'
       for:
@@ -192,7 +192,7 @@ automation:
         after: '07:00:00'
         before: '22:00:00'
       - condition: state
-        entity_id: group.family
+        entity_id: group.family_presence
         state: 'not_home'
       - condition: state
         entity_id: input_boolean.disable_daily_vacuum
@@ -215,7 +215,7 @@ automation:
   - alias: Send alert after daily vacuum to empty the dustbin
     trigger:
     - platform: state
-      entity_id: group.family
+      entity_id: group.family_presence
       to: 'home'
       for:
         minutes: 2

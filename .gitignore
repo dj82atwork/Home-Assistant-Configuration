@@ -5,6 +5,7 @@
 *.key
 *.pem
 *.old
+google*.html
 location.txt
 mqttssl
 appdaemon/appdaemon.yaml
@@ -44,6 +45,7 @@ harmony_media_room.conf
 pyozw.sqlite
 !/.gitignore
 .storage
+.Trash-0
 *.config_entries
 *.tmp
 hadaemon
@@ -51,4 +53,5 @@ __pycache__/
 entity_registry.yaml
 notebooks
 node-red
+tensorflow
 .google_maps_location*

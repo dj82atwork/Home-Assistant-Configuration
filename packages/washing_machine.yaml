@@ -182,7 +182,7 @@ automation:
           before: '22:30:00'
           after: '08:30:00'
         - condition: state
-          entity_id: group.family
+          entity_id: group.family_presence
           state: 'home'
         - condition: state
           entity_id: input_select.washing_machine_status

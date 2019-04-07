@@ -1,0 +1,92 @@
+###############################################################################
+#   @author         :   Trent Stanton
+#   @date           :   5/04/2019
+#   @package        :   Surveillance Cameras
+#   @description    :   Surveillance Cameras and Tensorflow Processing
+#   @url            :   
+###############################################################################
+camera:
+  - platform: generic
+    still_image_url: !secret frontdoor_camera_still
+    stream_source: !secret frontdoor_camera_stream
+    name: FrontDoor
+  - platform: generic
+    still_image_url: !secret backdeck_camera_still
+    stream_source: !secret backdeck_camera_stream
+    name: BackDeck
+image_processing:
+  - platform: tensorflow
+    scan_interval: 10000
+    source:
+      - entity_id: camera.frontdoor
+      - entity_id: camera.backdeck
+    file_out:
+      - "/config/www/tensorflow/{{ camera_entity.split('.')[1] }}_latest.jpg"
+      - "/config/www/tensorflow/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"
+    model:
+      graph: /config/tensorflow/frozen_inference_graph.pb
+      categories:
+        - category: person
+#        - dog
+#        - car
+#        - truck
+input_boolean:
+  disable_camera_notifications:
+    name: Disable Welcome Home Message
+# Camera Notifications even when home.
+  force_enable_camera_notifications:
+    name: Force Enable Motion
+
+###############################################################################
+#                               Automations
+###############################################################################
+automation:
+  - alias: Tensorflow Scan with Webhook Motion ## https://HAURL/api/webhook/frontdoor_motion and https://HAURL/api/webhook/backdeck_motion ##
+    trigger:
+      - platform: webhook
+        webhook_id: frontdoor_motion
+      - platform: webhook
+        webhook_id: backdeck_motion
+    action:
+      - service: image_processing.scan
+        data_template:
+          entity_id: "image_processing.tensorflow_{{ trigger.webhook_id.split('_')[0] }}"
+  - alias: Notify Motion
+    trigger:
+      - platform: numeric_state
+        entity_id:
+          - image_processing.tensorflow_frontdoor
+          - image_processing.tensorflow_backdeck
+        above: '0'
+    action:
+      - service: camera.record
+        data_template:
+          entity_id: "camera.{{ trigger.entity_id.split('.')[1].split('_')[1] }}"
+          filename: "/share/videos/{{ trigger.entity_id.split('.')[1].split('_')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.mp4"
+#          duration: 20
+#          lookback: 10
+      -  condition: and
+         conditions:
+           - condition: state
+             entity_id: input_boolean.disable_welcome_home
+             state: 'off'
+           - condition: or
+             conditions:
+               - condition: template
+                 value_template: "{{ not is_state('group.family_presence', 'home') }}"
+               - condition: state
+                 entity_id: input_boolean.force_enable_camera_notifications
+                 state: 'on'
+      - service: notify.html5_trent_galaxys8
+        data_template:
+          title: "Home Security"
+          message: "{{ trigger.entity_id.split('.')[1].split('_')[1]|capitalize }} person detected!"
+          data:
+            image: '/local/tensorflow/{{ trigger.entity_id.split(".")[1].split("_")[1] }}_latest.jpg'
+            url: "/lovelace/2"
+            actions:
+            - action: open
+              title: "Show Video"
+              url: "/lovelace/2"
+            - action: alarm
+              title: "Initiate Alarm"

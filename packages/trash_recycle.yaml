@@ -1,13 +1,12 @@
 ###############################################################################
 #   @author         :   Mahasri Kalavala
 #   @modified       :   Trent Stanton
-#   @date           :   04/15/2017
+#   @date           :   07/04/2019
 #   @package        :   Trash & Recycle
 #   @description    :   Trash & Recycle Pickup Scheduler and Reminder
 ###############################################################################
 homeassistant:
   customize:
-
     group.date_time:
       order: 9
     group.trash_schedule:

@@ -47,7 +47,7 @@ script:
           - condition: or
             conditions:
               - condition: state
-                entity_id: group.family
+                entity_id: group.family_presence
                 state: 'home'
               - condition: state
                 entity_id: input_boolean.guest_mode

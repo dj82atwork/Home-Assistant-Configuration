@@ -1,0 +1,51 @@
+###############################################################################
+#   @author         :   Trent Stanton
+#   @date           :   7/04/2019
+#   @package        :   Device Trackers and Presence
+#   @description    :   
+#   @url            :   
+###############################################################################
+device_tracker:
+# Google Maps API Tracking
+  - platform: google_maps
+    username: !secret google_mapsapi_username
+    password: !secret google_mapsapi_password
+# MQTT / Zanzito based device tracking
+  - platform: mqtt_json
+    devices:
+      trents_galaxy: zanzito/trent/location
+# NMAP Based Device Tracking
+  - platform: nmap_tracker
+    hosts: !secret nmap_hosts
+    exclude:
+     - !secret router_ip
+     - !secret hass_ip
+     - !secret sensor_synology_host
+
+zone:
+  name: !secret zone_name
+  latitude: !secret zone_latitude
+  longitude: !secret zone_longitude
+  icon: mdi:server-network
+  radius: 250
+
+zone 2:
+  name: !secret zone2_name
+  latitude: !secret zone2_latitude
+  longitude: !secret zone2_longitude
+  icon: mdi:hospital-building
+  radius: 250
+
+zone 3:
+  name: Home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  icon: mdi:home
+  radius: 150
+
+group:
+  family_presence:
+    name: Family Presence
+    entities:
+      - device_tracker.google_maps_109209758211303121867
+      - device_tracker.rachels_iphone

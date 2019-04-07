@@ -7,6 +7,10 @@ homeassistant:
   time_zone: Australia/Melbourne
   # Include Packages
   packages: !include_dir_named packages
+  whitelist_external_dirs:
+   - /tmp
+   - /share
+    
 
 # Customizations
   customize_domain: {}
@@ -14,7 +18,6 @@ homeassistant:
 
 # Enables the frontend
 http:
-  api_password: !secret api_password
   base_url: !secret base_url
 
 # Enables Default Home Assistant Components
@@ -73,6 +76,7 @@ logbook:
       - sensor.time_date
       - sensor.nzbget_speed
 
+
 # Track the sun
 sun:
 
@@ -95,15 +99,6 @@ sensor:
   display_options:
     - 'time'
     - 'date'
-
-# Camera (Synology)
-camera:
-  - platform: synology
-    url: !secret synologycam_url
-    username: !secret synologycam_username
-    password: !secret synologycam_password
-    verify_ssl: False
-    timeout: 15
 
 # IFTTT Key
 ifttt:
@@ -128,22 +123,6 @@ mqtt:
     topic: 'hass/status'
     payload: 'offline'
 
-device_tracker:
-# Google Maps API Tracking
-  - platform: google_maps
-    username: !secret google_mapsapi_username
-    password: !secret google_mapsapi_password
-# MQTT / Zanzito based device tracking
-  - platform: mqtt_json
-    devices:
-      trents_galaxy: zanzito/trent/location
-# NMAP Based Device Tracking
-  - platform: nmap_tracker
-    hosts: !secret nmap_hosts
-    exclude:
-     - !secret router_ip
-     - !secret hass_ip
-     - !secret sensor_synology_host
 
 # Logitech Harmony Living Room
 remote:
@@ -151,27 +130,3 @@ remote:
     name: !secret harmony_name
     host: !secret harmony_ip
     activity: Watch TV
-
-############
-# Additional Zones
-############
-zone:
-  name: !secret zone_name
-  latitude: !secret zone_latitude
-  longitude: !secret zone_longitude
-  icon: mdi:server-network
-  radius: 250
-
-zone 2:
-  name: !secret zone2_name
-  latitude: !secret zone2_latitude
-  longitude: !secret zone2_longitude
-  icon: mdi:hospital-building
-  radius: 250
-
-zone 3:
-  name: Home
-  latitude: !secret home_latitude
-  longitude: !secret home_longitude
-  icon: mdi:home
-  radius: 150

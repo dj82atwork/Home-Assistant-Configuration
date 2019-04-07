@@ -80,10 +80,19 @@ script:
     sequence:
       - service: homeassistant.turn_off
         data:
-          entity_id: group.lights
+          entity_id: group.all_lights
       - service: homeassistant.turn_off
         data:
-          entity_id: group.switches
+          entity_id: switch.livingroom_light
+      - service: homeassistant.turn_off
+        data:
+          entity_id: switch.kitchen_light
+      - service: homeassistant.turn_off
+        data:
+          entity_id: switch.living_room_lamp
+      - service: homeassistant.turn_off
+        data:
+          entity_id: switch.outside_heater
       - service: media_player.turn_off
         data:
           entity_id: media_player.living_room_home

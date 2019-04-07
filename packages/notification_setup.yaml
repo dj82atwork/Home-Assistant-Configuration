@@ -7,21 +7,30 @@
 ###############################################################################
 notify:
   - platform: html5
-    gcm_api_key: !secret html5_gcm_api
-    gcm_sender_id: !secret html5_gcm_sender
+    vapid_pub_key: !secret html5_vapid_pub_key
+    vapid_prv_key: !secret html5_vapid_prv_key
+    vapid_email: !secret html5_vapid_email
   - name: trent_and_rachel
     platform: group
     services:
-      - service: html5_trent_galaxys8
-      - service: ios_rachels_iphone
+      - service: html5
+        data:
+          target: "trent_galaxys8"
+      - service: ios
+        data:
+          target: "rachels_iphone"
   - name: trent
     platform: group
     services:
-      - service: html5_trent_galaxys8
+      - service: html5
+        data:
+          target: "trent_galaxys8"
   - name: rachel
     platform: group
     services:
-      - service: ios_rachels_iphone
+      - service: ios
+        data:
+          target: "rachels_iphone"
 # Google Assistant Web Server API - https://github.com/robwolff3/google-assistant-webserver
   - name: google_assistant_broadcast
     platform: rest
